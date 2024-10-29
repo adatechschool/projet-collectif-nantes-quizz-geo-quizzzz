@@ -11,6 +11,7 @@ header {
     text-align: center;
     padding: 1%; /*centre texte dans le header => Demander à JF diff entre % et em */
     margin-bottom: 10px;
+color : white;
 }
 
 /* Le conteneur parent */
