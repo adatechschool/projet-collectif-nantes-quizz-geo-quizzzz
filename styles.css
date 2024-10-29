@@ -45,8 +45,6 @@ aside {
     height: 45px;
     border-radius: 10px;
     box-shadow: 10px 5px 5px grey;
-
-
     
 }
 
@@ -57,8 +55,18 @@ aside {
     width: 50%;
     height: 25px;
     border-radius: 10px;
-   
+}
 
+.image-reponse {
+    width: 350px;
+    height: 350px; 
+    display: flex; 
+    padding: 20px;
+}
+
+#texteDeLaCarte{
+    
 
 
 }
+
