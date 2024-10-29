@@ -62,11 +62,12 @@ aside {
     height: 350px; 
     display: flex; 
     padding: 20px;
+    float: left;
 }
 
 #texteDeLaCarte{
-    
-
-
+    justify-content: flex-end;
+    text-align: center;
+    padding-top: 130px;
 }
 
