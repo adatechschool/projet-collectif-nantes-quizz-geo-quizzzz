@@ -30,6 +30,14 @@ main {
     height : 500px;
 }
 
+.styleQuestion {
+    text-align: center;
+    width: 50%;
+    flex: 1;             /* Équivaut à flex-grow: 1, flex-shrink: 1, flex-basis: 0% */
+    padding: 20px;
+    height : 500px;
+}
+
 aside {
     background-color: #E3C899;
     width: 50%;        /* Largeur fixe */
