@@ -21,6 +21,7 @@ firstQuestion.options.forEach(option => { //pour chaque reponse de la liste repo
   });
 
 let currentQuestionIndex = 0 //Déclarer une variable pour suivre la question actuelle (currentQuestionIndex). Au début, elle est égale à zéro. 
+
 let boutonHTML = document.getElementById('valider-suivant')  
 
 
