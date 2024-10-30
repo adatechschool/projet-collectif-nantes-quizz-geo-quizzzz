@@ -5,27 +5,28 @@ let quizQuestionHTML = document.getElementById('questions');
 
 let quizReponseHTML = document.getElementById('reponses');
 
-console.log(quizQuestionHTML);
-console.log(quizReponseHTML)
+// console.log(quizQuestionHTML);
+// console.log(quizReponseHTML);
 
 // Récupérer la première question
 
-let firstQuestion = quizTableau.questions[0];
+const firstQuestion = quizTableau.questions[0];
 
-console.log(firstQuestion);
+//console.log(firstQuestion);
 
 // Injecter le texte de la question dans l'emplacement dédié
 
 
 quizQuestionHTML.innerText=firstQuestion.text
 
-quizReponseHTML.innerText=firstQuestion.options
+//quizReponseHTML.innerText=firstQuestion.options
+//console.log(quizReponseHTML)
 
 
-// // Pour chaque option, créer un bouton et l'ajouter au conteneur
-// firstQuestion.__________.forEach(__________ => {
-//     const __________ = document.createElement('button');
-//     __________.innerText = __________;
-//     __________.classList.add('__________');
-//     __________.appendChild(__________);
-//   });
+// Pour chaque option, créer un bouton et l'ajouter au conteneur
+firstQuestion.options.forEach(option => {
+    const reponseBouton = document.createElement('button');
+    reponseBouton.innerText = option;
+    reponseBouton.classList.add('button');
+    quizReponseHTML.appendChild(reponseBouton);
+  });
