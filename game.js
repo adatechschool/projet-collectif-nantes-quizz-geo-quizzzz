@@ -26,7 +26,7 @@ let boutonHTML = document.getElementById('valider-suivant')
 
 function loadQuestion() {
     // Vider le conteneur des options
-    quizQuestionHTML.innerHTML = '';
+    quizReponseHTML.innerHTML = '';
   
     // Récupérer la question actuelle
     const questionSuivante = quizTableau.questions[currentQuestionIndex];
@@ -58,6 +58,7 @@ function loadQuestion() {
       boutonHTML.innerText = 'Fin du quizz';
       quizReponseHTML.innerHTML = ''; // Effacer les options
       boutonHTML.style.display = ''; // Cacher le bouton Suivant
+      quizQuestionHTML.innerText="";
     }
   });
   
