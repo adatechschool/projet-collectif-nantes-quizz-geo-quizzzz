@@ -62,8 +62,7 @@ function loadQuestion() {
     }
   });
   
-  
-
+  // Charger la première question au chargement de la page
 
   // Fonction pour réinitialiser le quiz
 boutonRejouerHTML.addEventListener('click', () => {
@@ -78,3 +77,5 @@ reponseBouton.addEventListener('click', () => {
   
 
 })
+  loadQuestion();
+
