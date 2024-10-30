@@ -25,16 +25,8 @@ quizQuestionHTML.innerText=firstQuestion.text
 
 // Pour chaque option, créer un bouton et l'ajouter au conteneur
 firstQuestion.options.forEach(option => {
-<<<<<<< HEAD
-  const responseBouton = document.createElement('button');
-  responseBouton.innerText = option;
-  responseBouton.classList.add('button');
-  quizReponseHTML.appendChild(responseBouton);
-});
-=======
     const reponseBouton = document.createElement('button');
     reponseBouton.innerText = option;
     reponseBouton.classList.add('button');
     quizReponseHTML.appendChild(reponseBouton);
   });
->>>>>>> b20f49db4593de9d72706a5f6ac8779ea1e7a4e5
