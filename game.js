@@ -15,6 +15,7 @@ quizQuestionHTML.innerText=firstQuestion.text// Injecter le texte de la question
 
 
 // Pour chaque option, créer un bouton et l'ajouter au conteneur
+
 firstQuestion.options.forEach(option => { //pour chaque reponse de la liste reponse
     const reponseBouton = document.createElement('button'); // on crée un bouton reponse
     reponseBouton.innerText = option; // on récupère le texte de la reponse pour l'intégrer le texte sur le bouton
