@@ -57,7 +57,11 @@ aside {
     
 }
 
+<<<<<<< HEAD
 /*#valider {
+=======
+#valider, #suivant, #rejouer {
+>>>>>>> ecdd5a6 (modification jeudi matin)
     background-color: #D97706;
     display: center;
     margin-top: 75px;

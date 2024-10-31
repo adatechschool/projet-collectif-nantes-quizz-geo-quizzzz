@@ -12,7 +12,7 @@ const boutonRejouerHTML = document.getElementById('rejouer')
 const correctAnswer = firstQuestion.correct_answer;
 
 quizQuestionHTML.innerText=firstQuestion.text// Injecter le texte de la question dans l'emplacement dédié
-
+quizReponseHTML.innerText=firstQuestion.options;
 
 // Pour chaque option, créer un bouton et l'ajouter au conteneur
 firstQuestion.options.forEach(option => { //pour chaque reponse de la liste reponse
@@ -46,7 +46,7 @@ function loadQuestion() {
   // Ajouter un écouteur d'événements pour le bouton "Suivant"
   boutonSuivantHTML.addEventListener('click', () => {
     // Incrémenter l'index de la question
-    currentQuestionIndex = currentQuestionIndex+1;
+    currentQuestionIndex++;
   
     // Vérifier s'il reste des questions
     if (currentQuestionIndex < quizTableau.questions.length) {
@@ -61,7 +61,7 @@ function loadQuestion() {
       boutonRejouerHTML.style.display = 'inline-block';
     }
   });
-  
+
   // Charger la première question au chargement de la page
 
   // Fonction pour réinitialiser le quiz
@@ -74,8 +74,27 @@ loadQuestion()// TODO Recharger la première question
 });
 
 reponseBouton.addEventListener('click', () => {
-  
+  if (currentQuestionIndex < quizTableau.questions.length) {
+    // Afficher la question suivante
+    loadQuestion();
+  } else {
+    // Si plus de questions, indiquer la fin du quiz
+    boutonHTML.innerText = 'Fin du quizz';
+    quizReponseHTML.innerHTML = ''; // Effacer les options
+    boutonHTML.style.display = ''; //Cacher le bouton Next
+    boutonHTML.style.display = 'inline-block'; // Afficher le bouton Suivant
+  }
 
-})
-  loadQuestion();
+  let replayButton= document.getElementById('rejouer');
 
+// Fonction pour réinitialiser le quiz
+replayButton.addEventListener('click', () => {
+    // TODO Réinitialiser l'index 
+    quizTableau.questions[currentQuestionIndex]
+    // TODO Cacher le bouton Rejouer et afficher le bouton Suivant
+    replayButton.innerHTML='';
+    boutonHTML.innerHTML='Suivant';
+    // TODO Recharger la première question
+    quizQuestionHTML.innerText=firstQuestion.text  // Injecter le texte de la question dans l'emplacement dédié
+
+  });
