@@ -9,8 +9,7 @@ let currentQuestionIndex = 0 //Déclarer une variable pour suivre la question ac
 const boutonSuivantHTML = document.getElementById('suivant')
 const boutonRejouerHTML = document.getElementById('rejouer')
 //let boutonValiderHTML = document.getElementById('valider')
-let reponseBouton= document.createElement('button');
-const correctAnswer = firstQuestion.correct_answer;
+let reponseBouton= document.createElement('button');  
 let score = 0; 
 
 
@@ -40,7 +39,8 @@ function loadQuestion() {
         reponseBouton.classList.add('boutonReponse'); // ajout de la classe button à chaque bouton
         quizReponseHTML.appendChild(reponseBouton); // terminer la boucle lorsqu'il n'y a plus de reponse
         reponseBouton.addEventListener('click', () => {
-          checkReponse(option);
+          // checkReponse(option); 
+                  // ecrire if(option == questionactuelle.correctanswer) 
             })
       });
   }
