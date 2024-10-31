@@ -57,14 +57,35 @@ aside {
     
 }
 
-#valider-suivant {
+/*#valider {
     background-color: #D97706;
     display: center;
     margin-top: 75px;
     width: 50%;
     height: 25px;
     border-radius: 10px;
+}*/
+
+#suivant {
+    background-color: #d440be;
+    display: center;
+    margin-top: 75px;
+    width: 50%;
+    height: 25px;
+    border-radius: 10px;
 }
+#rejouer {
+    background-color: #3f1dd8;
+    display: center;
+    margin-top: 75px;
+    width: 50%;
+    height: 25px;
+    border-radius: 10px;
+}
+
+
+
+
 
 .image-reponse {
     width: 350px;

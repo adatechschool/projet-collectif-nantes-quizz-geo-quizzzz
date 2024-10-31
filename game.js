@@ -4,10 +4,11 @@ import  {quizTableau}  from './questions.js'; // Import des questions
 // Récupérer les emplacements pour injecter la question et les options
 let quizQuestionHTML = document.getElementById('questions');
 let quizReponseHTML = document.getElementById('reponses');
-
-
 const firstQuestion = quizTableau.questions[0];// Récupérer la première question
-
+let currentQuestionIndex = 0 //Déclarer une variable pour suivre la question actuelle (currentQuestionIndex). Au début, elle est égale à zéro. 
+const boutonSuivantHTML = document.getElementById('suivant')
+const boutonRejouerHTML = document.getElementById('rejouer')
+//let boutonValiderHTML = document.getElementById('valider')
 
 quizQuestionHTML.innerText=firstQuestion.text// Injecter le texte de la question dans l'emplacement dédié
 
@@ -19,9 +20,6 @@ firstQuestion.options.forEach(option => { //pour chaque reponse de la liste repo
     reponseBouton.classList.add('boutonReponse'); // ajout de la classe button à chaque bouton
     quizReponseHTML.appendChild(reponseBouton); // terminer la boucle lorsqu'il n'y a plus de reponse
   });
-
-let currentQuestionIndex = 0 //Déclarer une variable pour suivre la question actuelle (currentQuestionIndex). Au début, elle est égale à zéro. 
-let boutonHTML = document.getElementById('valider-suivant')  
 
 
 function loadQuestion() {
@@ -45,7 +43,7 @@ function loadQuestion() {
 
 
   // Ajouter un écouteur d'événements pour le bouton "Suivant"
-  boutonHTML.addEventListener('click', () => {
+  boutonSuivantHTML.addEventListener('click', () => {
     // Incrémenter l'index de la question
     currentQuestionIndex = currentQuestionIndex+1;
   
@@ -55,12 +53,14 @@ function loadQuestion() {
       loadQuestion();
     } else {
       // Si plus de questions, indiquer la fin du quiz
-      boutonHTML.innerText = 'Fin du quizz';
+      boutonSuivantHTML.innerText = 'Fin du quizz';
       quizReponseHTML.innerHTML = ''; // Effacer les options
-      boutonHTML.style.display = ''; // Cacher le bouton Suivant
+      boutonSuivantHTML.style.display = 'none'; // Cacher le bouton Suivant
       quizQuestionHTML.innerText="";
     }
   });
   
   // Charger la première question au chargement de la page
   loadQuestion();
+
+
