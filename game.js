@@ -90,8 +90,7 @@ reponseBouton.addEventListener('click', () => {
 // Fonction pour réinitialiser le quiz
 replayButton.addEventListener('click', () => {
     // TODO Réinitialiser l'index 
-    quizTableau.questions[currentQuestionIndex]
-    // TODO Cacher le bouton Rejouer et afficher le bouton Suivant
+    currentQuestionIndex[0]
     replayButton.innerHTML='';
     boutonHTML.innerHTML='Suivant';
     // TODO Recharger la première question
