@@ -11,22 +11,12 @@ const boutonRejouerHTML = document.getElementById('rejouer')
 //let boutonValiderHTML = document.getElementById('valider')
 let reponseBouton= document.createElement('button');
 const correctAnswer = firstQuestion.correct_answer;
+let score = 0; 
+
 
 quizQuestionHTML.innerText=firstQuestion.text// Injecter le texte de la question dans l'emplacement dédié
 
-
-// Pour chaque option, créer un bouton et l'ajouter au conteneur
-firstQuestion.options.forEach(option => { //pour chaque reponse de la liste reponse
-    reponseBouton = document.createElement('button'); // on crée un bouton reponse
-    reponseBouton.innerText = option; // on récupère le texte de la reponse pour l'intégrer le texte sur le bouton
-    reponseBouton.classList.add('boutonReponse'); // ajout de la classe button à chaque bouton
-    quizReponseHTML.appendChild(reponseBouton); // terminer la boucle lorsqu'il n'y a plus de reponse
-    // reponseBouton.addEventListener('click', () => {
-    //   let conteneurDeReponse = reponseBouton.innerText
-    
-    // })
-    
-  });
+function checkReponse(){}
 
   
 function loadQuestion() {
@@ -34,20 +24,27 @@ function loadQuestion() {
     quizReponseHTML.innerHTML = '';
   
     // Récupérer la question actuelle
-    const questionSuivante = quizTableau.questions[currentQuestionIndex];
+    const questionactuelle = quizTableau.questions[currentQuestionIndex];
+    console.log(currentQuestionIndex);
+    console.log(quizTableau.questions);
+    console.log(quizTableau.questions[currentQuestionIndex])
   
     // Injecter la question dans le HTML
-    quizQuestionHTML.innerText = questionSuivante.text;
+    quizQuestionHTML.innerText = questionactuelle.text;
   
     // Injecter les options dans le HTML 
-    questionSuivante.options.forEach(option => { //pour chaque reponse de la liste reponse
-        reponseBouton = document.createElement('button'); // on crée un bouton reponse
+    questionactuelle.options.forEach(option => { //pour chaque reponse de la liste reponse
+        let reponseBouton = document.createElement('button'); // on crée un bouton reponse
+        console.log("Bravo");
         reponseBouton.innerText = option; // on récupère le texte de la reponse pour l'intégrer le texte sur le bouton
         reponseBouton.classList.add('boutonReponse'); // ajout de la classe button à chaque bouton
         quizReponseHTML.appendChild(reponseBouton); // terminer la boucle lorsqu'il n'y a plus de reponse
+        reponseBouton.addEventListener('click', () => {
+          checkReponse(option);
+            })
       });
   }
-
+loadQuestion();
 
   // Ajouter un écouteur d'événements pour le bouton "Suivant"
   boutonSuivantHTML.addEventListener('click', () => {
@@ -67,15 +64,13 @@ function loadQuestion() {
       boutonRejouerHTML.style.display = 'inline-block';
     }
   });
-  
-  
-
 
   // Fonction pour réinitialiser le quiz
 boutonRejouerHTML.addEventListener('click', () => {
 currentQuestionIndex= 0      // TODO Réinitialiser l'index 
 boutonRejouerHTML.style.display = 'none';      // TODO Cacher le bouton Rejouer et afficher le bouton Suivant  
 boutonSuivantHTML.style.display = 'inline-block'; // Afficher le bouton suivant
-loadQuestion(firstQuestion)// TODO Recharger la première question
- 
+loadQuestion()// TODO Recharger la première question
 });
+
+console.log(checkReponse());
