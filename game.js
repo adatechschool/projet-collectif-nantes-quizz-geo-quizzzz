@@ -9,6 +9,7 @@ let currentQuestionIndex = 0 //Déclarer une variable pour suivre la question ac
 const boutonSuivantHTML = document.getElementById('suivant')
 const boutonRejouerHTML = document.getElementById('rejouer')
 //let boutonValiderHTML = document.getElementById('valider')
+let reponseBouton= document.createElement('button');
 const correctAnswer = firstQuestion.correct_answer;
 
 quizQuestionHTML.innerText=firstQuestion.text// Injecter le texte de la question dans l'emplacement dédié
@@ -16,13 +17,18 @@ quizQuestionHTML.innerText=firstQuestion.text// Injecter le texte de la question
 
 // Pour chaque option, créer un bouton et l'ajouter au conteneur
 firstQuestion.options.forEach(option => { //pour chaque reponse de la liste reponse
-    const reponseBouton = document.createElement('button'); // on crée un bouton reponse
+    reponseBouton = document.createElement('button'); // on crée un bouton reponse
     reponseBouton.innerText = option; // on récupère le texte de la reponse pour l'intégrer le texte sur le bouton
     reponseBouton.classList.add('boutonReponse'); // ajout de la classe button à chaque bouton
     quizReponseHTML.appendChild(reponseBouton); // terminer la boucle lorsqu'il n'y a plus de reponse
+    // reponseBouton.addEventListener('click', () => {
+    //   let conteneurDeReponse = reponseBouton.innerText
+    
+    // })
+    
   });
 
-
+  
 function loadQuestion() {
     // Vider le conteneur des options
     quizReponseHTML.innerHTML = '';
@@ -35,7 +41,7 @@ function loadQuestion() {
   
     // Injecter les options dans le HTML 
     questionSuivante.options.forEach(option => { //pour chaque reponse de la liste reponse
-        const reponseBouton = document.createElement('button'); // on crée un bouton reponse
+        reponseBouton = document.createElement('button'); // on crée un bouton reponse
         reponseBouton.innerText = option; // on récupère le texte de la reponse pour l'intégrer le texte sur le bouton
         reponseBouton.classList.add('boutonReponse'); // ajout de la classe button à chaque bouton
         quizReponseHTML.appendChild(reponseBouton); // terminer la boucle lorsqu'il n'y a plus de reponse
@@ -70,11 +76,6 @@ boutonRejouerHTML.addEventListener('click', () => {
 currentQuestionIndex= 0      // TODO Réinitialiser l'index 
 boutonRejouerHTML.style.display = 'none';      // TODO Cacher le bouton Rejouer et afficher le bouton Suivant  
 boutonSuivantHTML.style.display = 'inline-block'; // Afficher le bouton suivant
-loadQuestion()// TODO Recharger la première question
+loadQuestion(firstQuestion)// TODO Recharger la première question
  
 });
-
-reponseBouton.addEventListener('click', () => {
-  
-
-})
