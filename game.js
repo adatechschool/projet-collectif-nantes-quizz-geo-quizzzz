@@ -9,6 +9,7 @@ let currentQuestionIndex = 0 //Déclarer une variable pour suivre la question ac
 const boutonSuivantHTML = document.getElementById('suivant')
 const boutonRejouerHTML = document.getElementById('rejouer')
 //let boutonValiderHTML = document.getElementById('valider')
+const correctAnswer = firstQuestion.correct_answer;
 
 quizQuestionHTML.innerText=firstQuestion.text// Injecter le texte de la question dans l'emplacement dédié
 
@@ -53,14 +54,27 @@ function loadQuestion() {
       loadQuestion();
     } else {
       // Si plus de questions, indiquer la fin du quiz
-      boutonSuivantHTML.innerText = 'Fin du quizz';
+      // boutonSuivantHTML.innerText = 'Fin du quizz';
       quizReponseHTML.innerHTML = ''; // Effacer les options
       boutonSuivantHTML.style.display = 'none'; // Cacher le bouton Suivant
       quizQuestionHTML.innerText="";
+      boutonRejouerHTML.style.display = 'inline-block';
     }
   });
   
-  // Charger la première question au chargement de la page
-  loadQuestion();
+  
 
 
+  // Fonction pour réinitialiser le quiz
+boutonRejouerHTML.addEventListener('click', () => {
+currentQuestionIndex= 0      // TODO Réinitialiser l'index 
+boutonRejouerHTML.style.display = 'none';      // TODO Cacher le bouton Rejouer et afficher le bouton Suivant  
+boutonSuivantHTML.style.display = 'inline-block'; // Afficher le bouton suivant
+loadQuestion()// TODO Recharger la première question
+ 
+});
+
+reponseBouton.addEventListener('click', () => {
+  
+
+})
