@@ -58,7 +58,10 @@ aside {
 }
 
 .boutonReponse.actif {
-    background-color: rgb(55, 224, 157);
+    background-color: blanchedalmond;
+    border-style: inset;
+    border-color: rgb(155, 102, 17);
+    border-width: 5px;
     display: center;
     margin: 5px;
     width: 50%;

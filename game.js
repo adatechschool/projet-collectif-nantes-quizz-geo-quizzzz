@@ -23,7 +23,7 @@ function checkReponse(optionReponse, correctAnswer){//verifie si la reponse est 
     boutonSuivantHTML.style.display = 'inline-block';
     boutonValiderHTML.style.display = 'none';    
     if(optionReponse == correctAnswer){
-      score++
+      score++      
       console.log(score)
       return true
     } else{
