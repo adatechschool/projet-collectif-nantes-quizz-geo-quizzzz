@@ -44,8 +44,7 @@ function checkReponse(optionReponse, correctAnswer){//verifie si la reponse est 
       console.log(texteCarte)
       return false
     }
-  })
-}
+  }
 
 
   
@@ -85,13 +84,14 @@ function loadQuestion() {
       carte.style.display = 'flex';
       carte.style.padding = '20px';
       carte.style.float = 'left'; 
-      
+
         checkReponse(option, questionactuelle.correct_answer); 
                   // ecrire if(option == questionactuelle.correctanswer) 
             })
 
       });
-  }
+  })
+}
 loadQuestion();
 
   // Ajouter un écouteur d'événements pour le bouton "Suivant"
