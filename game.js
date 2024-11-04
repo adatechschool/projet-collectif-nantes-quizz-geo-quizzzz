@@ -4,8 +4,10 @@ import  {quizTableau}  from './questions.js'; // Import des questions
 // Récupérer les emplacements pour injecter la question et les options
 let quizQuestionHTML = document.getElementById('questions');
 let quizReponseHTML = document.getElementById('reponses');
+
 const firstQuestion = quizTableau.questions[0];// Récupérer la première question
 let currentQuestionIndex = 0 //Déclarer une variable pour suivre la question actuelle (currentQuestionIndex). Au début, elle est égale à zéro. 
+
 const boutonSuivantHTML = document.getElementById('suivant')
 const boutonRejouerHTML = document.getElementById('rejouer')
 //let boutonValiderHTML = document.getElementById('valider')
