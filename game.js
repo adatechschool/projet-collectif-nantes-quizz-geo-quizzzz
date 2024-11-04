@@ -26,16 +26,7 @@ quizQuestionHTML.innerText=firstQuestion.text// Injecter le texte de la question
 
 
 function checkReponse(optionReponse, correctAnswer){//verifie si la reponse est correcte ou non
-  boutonValiderHTML.addEventListener('click', ()=>{ //au clic sur valider
-    boutonSuivantHTML.style.display = 'inline-block';
-    boutonValiderHTML.style.display = 'none';
-    carte.style.display = 'inline-block'
-    texteCarte.style.display = 'inline-block'
-carte.style.width = '350px';
-carte.style.height = '350px';
-carte.style.display = 'flex';
-carte.style.padding = '20px';
-carte.style.float = 'left';
+  
 
     if(optionReponse == correctAnswer){
       score++
@@ -84,7 +75,17 @@ function loadQuestion() {
         })
         event.currentTarget.classList.add('actif');
       
-        
+        boutonValiderHTML.addEventListener('click', ()=>{ //au clic sur valider
+          boutonSuivantHTML.style.display = 'inline-block';
+          boutonValiderHTML.style.display = 'none';
+          carte.style.display = 'inline-block'
+          texteCarte.style.display = 'inline-block'
+      carte.style.width = '350px';
+      carte.style.height = '350px';
+      carte.style.display = 'flex';
+      carte.style.padding = '20px';
+      carte.style.float = 'left'; 
+      
         checkReponse(option, questionactuelle.correct_answer); 
                   // ecrire if(option == questionactuelle.correctanswer) 
             })
