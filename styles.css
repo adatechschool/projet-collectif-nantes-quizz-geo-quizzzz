@@ -115,3 +115,10 @@ aside {
     padding-top: 130px;
 }
 
+#carte{
+    width: 350px;
+    height: 350px; 
+    display: flex; 
+    padding: 20px;
+    float: left;
+}
