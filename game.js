@@ -10,7 +10,7 @@ let currentQuestionIndex = 0 //Déclarer une variable pour suivre la question ac
 
 const boutonSuivantHTML = document.getElementById('suivant')
 const boutonRejouerHTML = document.getElementById('rejouer')
-//let boutonValiderHTML = document.getElementById('valider')
+const boutonValiderHTML = document.getElementById('valider')
 let reponseBouton= document.createElement('button');  
 let score = 0; 
 
@@ -18,16 +18,21 @@ let score = 0;
 quizQuestionHTML.innerText=firstQuestion.text// Injecter le texte de la question dans l'emplacement dédié
 
 
-function checkReponse(optionReponse, correctAnswer){
-  if(optionReponse == correctAnswer){
-    score++
-    console.log(score)
-    return true
-  } else{
-    console.log("La réponse est fausse")
-    return false
-  }
+function checkReponse(optionReponse, correctAnswer){//verifie si la reponse est correcte ou non
+  boutonValiderHTML.addEventListener('click', ()=>{ //au clic sur valider
+    boutonSuivantHTML.style.display = 'inline-block';
+    boutonValiderHTML.style.display = 'none';    
+    if(optionReponse == correctAnswer){
+      score++
+      console.log(score)
+      return true
+    } else{
+      console.log("La réponse est fausse")
+      return false
+    }
+  })
 }
+
 
   
 function loadQuestion() {
@@ -51,7 +56,7 @@ function loadQuestion() {
         reponseBouton.classList.add('boutonReponse'); // ajout de la classe button à chaque bouton
         quizReponseHTML.appendChild(reponseBouton); // terminer la boucle lorsqu'il n'y a plus de reponse
         reponseBouton.addEventListener('click', (event) => { //ici on démarre une fonction masi qui n'a pas de nom ()
-        document.querySelectorAll('.boutonReponse').forEach(reponseBouton=>{
+        document.querySelectorAll('.boutonReponse').forEach(reponseBouton=>{ //applique la surbrillance en fonction du clic sur le bouton reponse
           reponseBouton.classList.remove('actif');
         })
         event.currentTarget.classList.add('actif');
@@ -60,6 +65,7 @@ function loadQuestion() {
         checkReponse(option, questionactuelle.correct_answer); 
                   // ecrire if(option == questionactuelle.correctanswer) 
             })
+
       });
   }
 loadQuestion();
@@ -68,7 +74,8 @@ loadQuestion();
   boutonSuivantHTML.addEventListener('click', () => {
     // Incrémenter l'index de la question
     currentQuestionIndex = currentQuestionIndex+1;
-  
+    boutonSuivantHTML.style.display = 'none';
+    boutonValiderHTML.style.display = 'inline-block'; 
     // Vérifier s'il reste des questions
     if (currentQuestionIndex < quizTableau.questions.length) {
       // Afficher la question suivante
