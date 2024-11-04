@@ -57,14 +57,25 @@ aside {
     
 }
 
-/*#valider {
+.boutonReponse.actif {
+    background-color: rgb(55, 224, 157);
+    display: center;
+    margin: 5px;
+    width: 50%;
+    height: 45px;
+    border-radius: 10px;
+    box-shadow: 10px 5px 5px grey;
+    
+}
+
+#valider {
     background-color: #D97706;
     display: center;
     margin-top: 75px;
     width: 50%;
     height: 25px;
     border-radius: 10px;
-}*/
+}
 
 #suivant {
     background-color: #d440be;

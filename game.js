@@ -50,7 +50,13 @@ function loadQuestion() {
         reponseBouton.innerText = option; // on récupère le texte de la reponse pour l'intégrer le texte sur le bouton
         reponseBouton.classList.add('boutonReponse'); // ajout de la classe button à chaque bouton
         quizReponseHTML.appendChild(reponseBouton); // terminer la boucle lorsqu'il n'y a plus de reponse
-        reponseBouton.addEventListener('click', () => { //ici on démarre une fonction masi qui n'a pas de nom ()
+        reponseBouton.addEventListener('click', (event) => { //ici on démarre une fonction masi qui n'a pas de nom ()
+        document.querySelectorAll('.boutonReponse').forEach(reponseBouton=>{
+          reponseBouton.classList.remove('actif');
+        })
+        event.currentTarget.classList.add('actif');
+      
+        
         checkReponse(option, questionactuelle.correct_answer); 
                   // ecrire if(option == questionactuelle.correctanswer) 
             })
