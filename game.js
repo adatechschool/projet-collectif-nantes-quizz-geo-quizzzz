@@ -17,7 +17,17 @@ let score = 0;
 
 quizQuestionHTML.innerText=firstQuestion.text// Injecter le texte de la question dans l'emplacement dédié
 
-function checkReponse(){}
+
+function checkReponse(optionReponse, correctAnswer){
+  if(optionReponse == correctAnswer){
+    score++
+    console.log(score)
+    return true
+  } else{
+    console.log("La réponse est fausse")
+    return false
+  }
+}
 
   
 function loadQuestion() {
@@ -26,9 +36,9 @@ function loadQuestion() {
   
     // Récupérer la question actuelle
     const questionactuelle = quizTableau.questions[currentQuestionIndex];
-    console.log(currentQuestionIndex);
-    console.log(quizTableau.questions);
-    console.log(quizTableau.questions[currentQuestionIndex])
+    // console.log(currentQuestionIndex);
+    // console.log(quizTableau.questions);
+    // console.log(quizTableau.questions[currentQuestionIndex])
   
     // Injecter la question dans le HTML
     quizQuestionHTML.innerText = questionactuelle.text;
@@ -36,12 +46,12 @@ function loadQuestion() {
     // Injecter les options dans le HTML 
     questionactuelle.options.forEach(option => { //pour chaque reponse de la liste reponse
         let reponseBouton = document.createElement('button'); // on crée un bouton reponse
-        console.log("Bravo");
+        //console.log("Bravo");
         reponseBouton.innerText = option; // on récupère le texte de la reponse pour l'intégrer le texte sur le bouton
         reponseBouton.classList.add('boutonReponse'); // ajout de la classe button à chaque bouton
         quizReponseHTML.appendChild(reponseBouton); // terminer la boucle lorsqu'il n'y a plus de reponse
-        reponseBouton.addEventListener('click', () => {
-          // checkReponse(option); 
+        reponseBouton.addEventListener('click', () => { //ici on démarre une fonction masi qui n'a pas de nom ()
+        checkReponse(option, questionactuelle.correct_answer); 
                   // ecrire if(option == questionactuelle.correctanswer) 
             })
       });
@@ -74,5 +84,3 @@ boutonRejouerHTML.style.display = 'none';      // TODO Cacher le bouton Rejouer 
 boutonSuivantHTML.style.display = 'inline-block'; // Afficher le bouton suivant
 loadQuestion()// TODO Recharger la première question
 });
-
-console.log(checkReponse());
