@@ -12,7 +12,12 @@ const boutonSuivantHTML = document.getElementById('suivant')
 const boutonRejouerHTML = document.getElementById('rejouer')
 const boutonValiderHTML = document.getElementById('valider')
 let reponseBouton= document.createElement('button');  
-let score = 0; 
+let score = 0;
+let carte = document.getElementById('carte')
+const imageElement = document.createElement('img')
+imageElement.src=questionActuelle.img_ville
+let texteCarte = document.getElementById('texteDeLaCarte')
+let questionActuelle = quizTableau.questions[currentQuestionIndex];
 
 
 quizQuestionHTML.innerText=firstQuestion.text// Injecter le texte de la question dans l'emplacement dédié
@@ -21,13 +26,20 @@ quizQuestionHTML.innerText=firstQuestion.text// Injecter le texte de la question
 function checkReponse(optionReponse, correctAnswer){//verifie si la reponse est correcte ou non
   boutonValiderHTML.addEventListener('click', ()=>{ //au clic sur valider
     boutonSuivantHTML.style.display = 'inline-block';
-    boutonValiderHTML.style.display = 'none';    
+    boutonValiderHTML.style.display = 'none';
+    carte=imageElement
+
     if(optionReponse == correctAnswer){
-      score++      
+      score++
+      
+      texteCarte="Bravo " + questionActuelle.descriptif
       console.log(score)
+      console.log(texteCarte)
       return true
     } else{
       console.log("La réponse est fausse")
+      texteCarte="T'es une grosse merde " + questionActuelle.descriptif
+      console.log(texteCarte)
       return false
     }
   })
@@ -40,16 +52,16 @@ function loadQuestion() {
     quizReponseHTML.innerHTML = '';
   
     // Récupérer la question actuelle
-    const questionactuelle = quizTableau.questions[currentQuestionIndex];
+    questionActuelle = quizTableau.questions[currentQuestionIndex];
     // console.log(currentQuestionIndex);
     // console.log(quizTableau.questions);
     // console.log(quizTableau.questions[currentQuestionIndex])
   
     // Injecter la question dans le HTML
-    quizQuestionHTML.innerText = questionactuelle.text;
+    quizQuestionHTML.innerText = questionActuelle.text;
   
     // Injecter les options dans le HTML 
-    questionactuelle.options.forEach(option => { //pour chaque reponse de la liste reponse
+    questionActuelle.options.forEach(option => { //pour chaque reponse de la liste reponse
         let reponseBouton = document.createElement('button'); // on crée un bouton reponse
         //console.log("Bravo");
         reponseBouton.innerText = option; // on récupère le texte de la reponse pour l'intégrer le texte sur le bouton
@@ -62,7 +74,7 @@ function loadQuestion() {
         event.currentTarget.classList.add('actif');
       
         
-        checkReponse(option, questionactuelle.correct_answer); 
+        checkReponse(option, questionActuelle.correct_answer); 
                   // ecrire if(option == questionactuelle.correctanswer) 
             })
 
