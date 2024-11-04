@@ -5,19 +5,21 @@ import  {quizTableau}  from './questions.js'; // Import des questions
 let quizQuestionHTML = document.getElementById('questions');
 let quizReponseHTML = document.getElementById('reponses');
 
+let texteCarte = document.getElementById('texteDeLaCarte');
+let carte = document.getElementById('carte')
+const imageElement = document.createElement('img');
+
 const firstQuestion = quizTableau.questions[0];// Récupérer la première question
 let currentQuestionIndex = 0 //Déclarer une variable pour suivre la question actuelle (currentQuestionIndex). Au début, elle est égale à zéro. 
 
 const boutonSuivantHTML = document.getElementById('suivant')
 const boutonRejouerHTML = document.getElementById('rejouer')
 const boutonValiderHTML = document.getElementById('valider')
-let reponseBouton= document.createElement('button');  
+let reponseBouton= document.createElement('button');
+let questionActuelle = quizTableau.questions[currentQuestionIndex];  
 let score = 0;
-let carte = document.getElementById('carte')
-const imageElement = document.createElement('img')
-imageElement.src=questionActuelle.img_ville
-let texteCarte = document.getElementById('texteDeLaCarte')
-let questionActuelle = quizTableau.questions[currentQuestionIndex];
+
+
 
 
 quizQuestionHTML.innerText=firstQuestion.text// Injecter le texte de la question dans l'emplacement dédié
@@ -27,18 +29,28 @@ function checkReponse(optionReponse, correctAnswer){//verifie si la reponse est 
   boutonValiderHTML.addEventListener('click', ()=>{ //au clic sur valider
     boutonSuivantHTML.style.display = 'inline-block';
     boutonValiderHTML.style.display = 'none';
-    carte=imageElement
+    carte.style.display = 'inline-block'
+    texteCarte.style.display = 'inline-block'
+carte.style.width = '350px';
+carte.style.height = '350px';
+carte.style.display = 'flex';
+carte.style.padding = '20px';
+carte.style.float = 'left';
 
     if(optionReponse == correctAnswer){
       score++
+
+      imageElement.src = questionActuelle.img_ville;
+      carte.appendChild(imageElement);  // Ajouter l'image à l'élément carte
+
       
-      texteCarte="Bravo " + questionActuelle.descriptif
+      texteCarte.innerText="Bravo " + questionActuelle.descriptif
       console.log(score)
       console.log(texteCarte)
       return true
-    } else{
+  } else{
       console.log("La réponse est fausse")
-      texteCarte="T'es une grosse merde " + questionActuelle.descriptif
+      texteCarte.innerText="T'es une grosse merde " + questionActuelle.descriptif
       console.log(texteCarte)
       return false
     }
@@ -69,7 +81,7 @@ function loadQuestion() {
         quizReponseHTML.appendChild(reponseBouton); // terminer la boucle lorsqu'il n'y a plus de reponse
         reponseBouton.addEventListener('click', (event) => { //ici on démarre une fonction masi qui n'a pas de nom ()
         document.querySelectorAll('.boutonReponse').forEach(reponseBouton=>{ //applique la surbrillance en fonction du clic sur le bouton reponse
-          reponseBouton.classList.remove('actif');
+        reponseBouton.classList.remove('actif');
         })
         event.currentTarget.classList.add('actif');
       
@@ -87,12 +99,14 @@ loadQuestion();
     // Incrémenter l'index de la question
     currentQuestionIndex = currentQuestionIndex+1;
     boutonSuivantHTML.style.display = 'none';
-    boutonValiderHTML.style.display = 'inline-block'; 
+    boutonValiderHTML.style.display = 'inline-block';
+    carte.style.display = 'none'
+    texteCarte.style.display = 'none'
     // Vérifier s'il reste des questions
     if (currentQuestionIndex < quizTableau.questions.length) {
       // Afficher la question suivante
       loadQuestion();
-    } else {
+  } else {
       // Si plus de questions, indiquer la fin du quiz
       // boutonSuivantHTML.innerText = 'Fin du quizz';
       quizReponseHTML.innerHTML = ''; // Effacer les options
