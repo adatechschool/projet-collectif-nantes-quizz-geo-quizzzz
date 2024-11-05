@@ -70,7 +70,7 @@ function checkReponse(optionReponse, correctAnswer){//verifie si la reponse est 
     if(optionReponse == correctAnswer){
       score++
       texteCarte="Bravo" + questionActuelle.descriptif
-      imageContainer = questionActuelle.img_ville[0];
+      imageElement.src = questionActuelle.img_ville
       console.log(score)
       console.log(texteCarte)
       return true
