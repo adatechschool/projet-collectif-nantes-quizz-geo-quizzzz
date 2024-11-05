@@ -168,4 +168,6 @@ boutonRejouerHTML.style.display = 'none';      // TODO Cacher le bouton Rejouer 
 boutonSuivantHTML.style.display = 'inline-block'; // Afficher le bouton suivant
 loadQuestion()// TODO Recharger la première question
 });
+
 loadQuestion();
+

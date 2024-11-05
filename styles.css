@@ -121,10 +121,14 @@ aside {
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 #valider,
 #suivant,
 =======
 <<<<<<< HEAD
+=======
+
+>>>>>>> c53584f (modification merecredi soir)
 .boutonReponse.actif {
     background-color: blanchedalmond;
     border-style: inset;
@@ -139,14 +143,12 @@ aside {
     
 }
 
-#valider {
-=======
-<<<<<<< HEAD
+
 /*#valider {
-=======
+
 #valider, #suivant, #rejouer {
->>>>>>> ecdd5a6 (modification jeudi matin)
->>>>>>> ee7740f (modification jeudi matin)
+
+
     background-color: #D97706;
     display: center;
     margin-top: 75px;
