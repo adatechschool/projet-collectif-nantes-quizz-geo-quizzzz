@@ -1,124 +1,190 @@
-
-body {
-    padding: 10px;
+/* Variables CSS pour une gestion facile des couleurs */
+:root {
+    --primary-color: #2C6E49; /* Couleur principale pour le header */
+    --secondary-color: #E3C899; /* Couleur de fond pour le aside */
+    --button-bg: blanchedalmond; /* Couleur de fond des boutons */
+    --button-hover: #D97706; /* Couleur de survol pour le bouton valider */
+    --font-color: #333; /* Couleur du texte */
+    --emoji-color: #D97706; /* Couleur pour le contenu emoji */
+    --border-radius: 10px; /* Rayon des bordures */
 }
 
+/* Style du body */
+body {
+    padding: 10px;
+    font-family: 'Schoolbell', cursive; /* Applique la police par défaut */
+    margin: 0; /* Supprime les marges par défaut */
+    background-color: #f9f9f9; /* Couleur de fond douce */
+}
 
+/* Style du header */
 header {
-    background-color: #2C6E49;
-    height: 100px;
-    width: auto;
-    text-align: center;
-    padding: 1%; /*centre texte dans le header => Demander à JF diff entre % et em */
-    margin-bottom: 10px;
-color : white;
+    background-color: var(--primary-color);
+    height: 200px;
+    width: 100%;
+    padding: 1%;
+    margin-bottom: 30px;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-family: 'Just Another Hand', cursive;
+    font-size: 30px;
+}
+
+header::before {
+    content: "🌍"; 
+    font-size: 6em;
+    margin-right: 8px; 
+    animation: rotation 15s linear infinite; /* Ajout de l'animation */
+}
+
+@keyframes rotation {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.header-content {
+    display: center; /* Prend tout l'espace disponible */
+    text-align: center; /* Centre le texte */
 }
 
 /* Le conteneur parent */
 .container {
-    display: flex;        /* Active Flexbox */
-    gap: 10px;           /* Espace entre les éléments */
-    min-height: 100vh;   /* Hauteur minimum pleine page */
+    display: flex; /* Active Flexbox */
+    gap: 10px; /* Espace entre les éléments */
+    min-height: 100vh; /* Hauteur minimum pleine page */
 }
 
-
+/* Style principal */
 main {
     text-align: center;
-    width: 50%;
-    flex: 1;             /* Équivaut à flex-grow: 1, flex-shrink: 1, flex-basis: 0% */
+    flex: 1; /* Équivaut à flex-grow: 1, flex-shrink: 1, flex-basis: 0% */
     padding: 20px;
-    height : 500px;
+    background-color: white; /* Fond blanc pour le contenu principal */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Ombre douce pour un effet de profondeur */
 }
 
+/* Style de la section questions */
+#questions {
+    padding: 20px; /* Espace intérieur */
+    margin: 20px 0; /* Marges autour de la section */
+    color: var(--font-color); /* Couleur du texte */
+    font-family: 'Just Another Hand', cursive;
+    font-size: 25px;
+}
+
+#questions::before {
+    content: "\1F914"; /* Emoji de pensée */
+    font-size: 1.5em; /* Taille de l'emoji */
+    margin-right: 10px; /* Espace à droite de l'emoji */
+}
+
+/* Style des questions */
 .styleQuestion {
     text-align: center;
-    width: 50%;
-    flex: 1;             /* Équivaut à flex-grow: 1, flex-shrink: 1, flex-basis: 0% */
+    flex: 1; /* Équivaut à flex-grow: 1, flex-shrink: 1, flex-basis: 0% */
     padding: 20px;
-    height : 500px;
+    background-color: #fff; /* Fond blanc */
 }
 
+
+/* Style des sections aside */
 aside {
-    background-color: #E3C899;
-    width: 50%;        /* Largeur fixe */
+    background-color: var(--secondary-color);
+    flex: 0 0 50%; /* Largeur fixe de 50% */
     padding: 20px;
-    height : 500px;
+    height: auto; /* Ajuster la hauteur automatiquement */
 }
 
-/* Styes de bouton*/
+/* Styles des boutons */
+.boutonReponse{
+    padding: 40px; /* Espace intérieur */
+    margin: 40px 0; /* Marges autour de la section */
+    color: var(--font-color); /* Couleur du texte */
+    font-family: 'Just Another Hand', cursive;
+    font-size: 25px;
+}
+
 .boutonReponse {
-    background-color: blanchedalmond;
-    display: center;
-    margin: 5px;
-    width: 50%;
-    height: 45px;
-    border-radius: 10px;
-    box-shadow: 10px 5px 5px grey;
-    
+    display: flex; /* Active Flexbox */
+    align-items: center; /* Centre verticalement */
+    justify-content: center; /* Centre horizontalement */
+    text-align: center; /* Facultatif, utile si le texte comporte plusieurs lignes */
+    height: auto;
+    padding: 35px; /* Ajout d'un padding pour plus d'espace autour du texte */
+    /* Autres styles ici */
 }
 
-.boutonReponse.actif {
-    background-color: blanchedalmond;
-    border-style: inset;
-    border-color: rgb(155, 102, 17);
-    border-width: 5px;
-    display: center;
-    margin: 5px;
-    width: 50%;
-    height: 45px;
-    border-radius: 10px;
-    box-shadow: 10px 5px 5px grey;
-    
-}
-
-#valider {
-    background-color: #D97706;
-    display: center;
-    margin-top: 75px;
-    width: 50%;
-    height: 25px;
-    border-radius: 10px;
-}
-
-#suivant {
-    background-color: #d440be;
-    display: center;
-    margin-top: 75px;
-    width: 50%;
-    height: 25px;
-    border-radius: 10px;
-}
+#valider,
+#suivant,
 #rejouer {
-    background-color: #3f1dd8;
-    display: center;
-    margin-top: 75px;
-    width: 50%;
-    height: 25px;
-    border-radius: 10px;
+    background-color: var(--button-bg);
+    margin: 5px auto; /* Centre le bouton avec auto */
+    width: 50%; /* Largeur fixe */
+    height: 45px; /* Hauteur uniforme */
+    border-radius: var(--border-radius); /* Rayon des bordures */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Ombre douce */
+    border: none; /* Enlève la bordure par défaut */
+    cursor: pointer; /* Curseur pointer */
+    display: block; /* Change en block pour le centrage */
+    transition: background-color 0.3s; /* Transition pour un effet de survol */
 }
 
+/* Styles spécifiques aux boutons actifs */
+.boutonReponse.actif {
+    border: 5px inset rgb(255, 180, 100); /* Bordure interne en orange doux */
+    background-color: rgba(255, 225, 180, 0.7); /* Couleur de fond orange doux légèrement transparente */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Ombre pour donner de la profondeur */
+    transition: border-color 0.3s ease, background-color 0.3s ease; /* Transition douce pour l'effet de changement */
+}
 
+.boutonReponse {
+    background-color: rgba(255, 225, 180, 0.5); /* Couleur de fond par défaut pour les boutons */
+    margin: 5px auto;
+    width: 50%;
+    height: 45px;
+    border-radius: var(--border-radius);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    border: none;
+    cursor: pointer;
+    display: block;
+    transition: background-color 0.3s, box-shadow 0.3s; /* Ajout de la transition pour la boîte d'ombre */
+}
 
+/* État au survol pour un effet supplémentaire */
+.boutonReponse:hover {
+    background-color: rgba(255, 225, 180, 0.8); /* Changez la couleur de fond au survol */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Ombre plus marquée au survol */
+}
 
+/* Styles spécifiques aux boutons de validation */
+#valider {
+    background-color: var(--button-hover);
+    height: 25px; /* Hauteur uniforme */
+}
 
+#suivant,
+#rejouer {
+    height: 25px; /* Hauteur uniforme */
+}
+
+/* Styles pour l'image de réponse */
 .image-reponse {
     width: 350px;
     height: 350px; 
     display: flex; 
     padding: 20px;
-    float: left;
+    float: left; /* Flottement à gauche */
 }
 
-#texteDeLaCarte{
+/* Style du texte de la carte */
+#texteDeLaCarte {
     justify-content: flex-end;
     text-align: center;
-    padding-top: 130px;
-}
-
-#carte{
-    width: 350px;
-    height: 350px; 
-    display: flex; 
-    padding: 20px;
-    float: left;
+    padding-top: 130px; /* Espace supérieur */
 }
