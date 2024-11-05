@@ -23,7 +23,7 @@ let score = 0;
 
 
 quizQuestionHTML.innerText=firstQuestion.text// Injecter le texte de la question dans l'emplacement dédié
-
+quizReponseHTML.innerText=firstQuestion.options;
 
 // function checkReponse(optionReponse, correctAnswer){//verifie si la reponse est correcte ou non
 //   boutonValiderHTML.addEventListener('click', ()=>{ //au clic sur valider
