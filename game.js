@@ -4,7 +4,6 @@ import  {quizTableau}  from './questions.js'; // Import des questions
 // Récupérer les emplacements pour injecter la question et les options
 let quizQuestionHTML = document.getElementById('questions');
 let quizReponseHTML = document.getElementById('reponses');
-<<<<<<< HEAD
 
 let texteCarte = document.getElementById('texteDeLaCarte');
 let carte = document.getElementById('carte')
@@ -22,14 +21,6 @@ let score = 0;
 
 
 
-=======
-const firstQuestion = quizTableau.questions[0];// Récupérer la première question
-let currentQuestionIndex = 0 //Déclarer une variable pour suivre la question actuelle (currentQuestionIndex). Au début, elle est égale à zéro. 
-const boutonSuivantHTML = document.getElementById('suivant')
-const boutonRejouerHTML = document.getElementById('rejouer')
-//let boutonValiderHTML = document.getElementById('valider')
-const correctAnswer = firstQuestion.correct_answer;
->>>>>>> a82e6ca (perte de temps)
 
 quizQuestionHTML.innerText=firstQuestion.text// Injecter le texte de la question dans l'emplacement dédié
 
@@ -64,7 +55,6 @@ quizQuestionHTML.innerText=firstQuestion.text// Injecter le texte de la question
 // })
 // }
 
-<<<<<<< HEAD
 // Déclarer l'event listener pour le bouton valider en dehors de checkReponse
 let reponseSelectionnee = null;
 let reponseCorrecte = null;
@@ -111,8 +101,6 @@ reponseBouton.addEventListener('click', (event) => {
     checkReponse(option, questionActuelle.correct_answer);
 });
 
-=======
->>>>>>> a82e6ca (perte de temps)
 
 function loadQuestion() {
 console.log("loadQuestion")
@@ -173,48 +161,11 @@ boutonSuivantHTML.addEventListener('click', () => {
   }
 });
 
-<<<<<<< HEAD
 // Fonction pour réinitialiser le quiz
-=======
-
-  // Ajouter un écouteur d'événements pour le bouton "Suivant"
-  boutonSuivantHTML.addEventListener('click', () => {
-    // Incrémenter l'index de la question
-    currentQuestionIndex = currentQuestionIndex+1;
-  
-    // Vérifier s'il reste des questions
-    if (currentQuestionIndex < quizTableau.questions.length) {
-      // Afficher la question suivante
-      loadQuestion();
-    } else {
-      // Si plus de questions, indiquer la fin du quiz
-      // boutonSuivantHTML.innerText = 'Fin du quizz';
-      quizReponseHTML.innerHTML = ''; // Effacer les options
-      boutonSuivantHTML.style.display = 'none'; // Cacher le bouton Suivant
-      quizQuestionHTML.innerText="";
-      boutonRejouerHTML.style.display = 'inline-block';
-    }
-  });
-  
-  
-
-
-  // Fonction pour réinitialiser le quiz
->>>>>>> a82e6ca (perte de temps)
 boutonRejouerHTML.addEventListener('click', () => {
 currentQuestionIndex= 0      // TODO Réinitialiser l'index 
 boutonRejouerHTML.style.display = 'none';      // TODO Cacher le bouton Rejouer et afficher le bouton Suivant  
 boutonSuivantHTML.style.display = 'inline-block'; // Afficher le bouton suivant
 loadQuestion()// TODO Recharger la première question
-<<<<<<< HEAD
 });
 loadQuestion();
-=======
- 
-});
-
-reponseBouton.addEventListener('click', () => {
-  
-
-})
->>>>>>> a82e6ca (perte de temps)
