@@ -19,41 +19,41 @@ let reponseBouton= document.createElement('button');
 let questionActuelle = quizTableau.questions[currentQuestionIndex];  
 let score = 0;
 
+//CODE TIMER !!!! 
 
+let timer;                // Variable pour stocker le timer
+let timeRemaining = 15;   // Temps initial en secondes
+let timerElement = document.getElementsByClassName('timer');  // Élément HTML pour afficher le timer
+
+
+function startTimer() { //AJOUT
+  // Afficher le temps initial dans l'élément timer
+  timerElement.innerText = `Temps restant : ${timeRemaining} secondes`;
+
+  // Définir une boucle qui diminue le temps restant chaque seconde
+  timer = setInterval(() => {
+      timeRemaining--;  // Décrémenter le temps de 1
+      timerElement.innerText = `Temps restant : ${timeRemaining} secondes`;
+
+      // Si le temps est écoulé, passer automatiquement à la question suivante
+      if (timeRemaining <= 0) {
+          clearInterval(timer);  // Arrêter le timer
+          loadNextQuestion();    // Passer à la question suivante
+      }
+  }, 1500); // Répéter chaque seconde
+}
+
+
+
+function resetTimer() {
+  clearInterval(timer); // Arrêter tout timer en cours
+  timeRemaining = 15;   // Réinitialiser le temps
+
+}
 
 
 quizQuestionHTML.innerText=firstQuestion.text// Injecter le texte de la question dans l'emplacement dédié
 
-
-// function checkReponse(optionReponse, correctAnswer){//verifie si la reponse est correcte ou non
-//   boutonValiderHTML.addEventListener('click', ()=>{ //au clic sur valider
-//     boutonSuivantHTML.style.display = 'inline-block';
-//     boutonValiderHTML.style.display = 'none';
-//   carte.style.display = 'inline-block'
-//   texteCarte.style.display = 'inline-block'
-//   carte.style.width = '350px';
-//   carte.style.height = '350px';
-//   carte.style.display = 'flex';
-//   carte.style.padding = '20px';
-//   carte.style.float = 'left';
-  
-//   if(optionReponse == correctAnswer){
-//     score++
-//     imageElement.src = questionActuelle.img_ville;
-//     carte.appendChild(imageElement);  // Ajouter l'image à l'élément carte
-    
-//     texteCarte.innerText="Bravo " + questionActuelle.descriptif
-//     console.log(score)
-//     console.log("checkReponse")
-//     return true
-// } else{
-//     console.log("La réponse est fausse")
-//     texteCarte.innerText="T'es une grosse merde " + questionActuelle.descriptif
-//     console.log(texteCarte)
-//     return false
-//   }
-// })
-// }
 
 // Déclarer l'event listener pour le bouton valider en dehors de checkReponse
 let reponseSelectionnee = null;
@@ -103,7 +103,11 @@ reponseBouton.addEventListener('click', (event) => {
 
 
 function loadQuestion() {
-console.log("loadQuestion")
+
+  resetTimer();    //   AJOUT Réinitialiser le timer au chargement d'une nouvelle question
+  startTimer();    // AJOUT Démarrer le timer pour cette question
+
+
   // Vider le conteneur des options
   quizReponseHTML.innerHTML = '';
 
@@ -139,6 +143,26 @@ console.log("loadQuestion")
 }
 
 
+function loadNextQuestion() { //AJOUT
+  // Incrémenter l'index de la question et charger la question suivante
+  currentQuestionIndex++;
+  boutonSuivantHTML.style.display = 'none';
+  boutonValiderHTML.style.display = 'inline-block';
+  carte.style.display = 'none';
+  texteCarte.style.display = 'none';
+
+  if (currentQuestionIndex < quizTableau.questions.length) {
+    loadQuestion(); // Charger la question suivante
+} else {
+    // Fin du quiz
+    quizReponseHTML.innerHTML = '';
+    boutonSuivantHTML.style.display = 'none';
+    quizQuestionHTML.innerText = "";
+    boutonRejouerHTML.style.display = 'inline-block';
+}
+}
+
+
 // Ajouter un écouteur d'événements pour le bouton "Suivant"
 boutonSuivantHTML.addEventListener('click', () => {
   // Incrémenter l'index de la question
@@ -148,17 +172,7 @@ boutonSuivantHTML.addEventListener('click', () => {
   carte.style.display = 'none'
   texteCarte.style.display = 'none'
   // Vérifier s'il reste des questions
-  if (currentQuestionIndex < quizTableau.questions.length) {
-    // Afficher la question suivante
-    loadQuestion();
-} else {
-    // Si plus de questions, indiquer la fin du quiz
-    // boutonSuivantHTML.innerText = 'Fin du quizz';
-    quizReponseHTML.innerHTML = ''; // Effacer les options
-    boutonSuivantHTML.style.display = 'none'; // Cacher le bouton Suivant
-    quizQuestionHTML.innerText="";
-    boutonRejouerHTML.style.display = 'inline-block';
-  }
+ 
 });
 
 // Fonction pour réinitialiser le quiz
@@ -168,4 +182,7 @@ boutonRejouerHTML.style.display = 'none';      // TODO Cacher le bouton Rejouer 
 boutonSuivantHTML.style.display = 'inline-block'; // Afficher le bouton suivant
 loadQuestion()// TODO Recharger la première question
 });
-loadQuestion();
+
+loadQuestion()
+
+
