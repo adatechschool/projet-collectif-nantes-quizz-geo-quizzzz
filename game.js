@@ -83,10 +83,10 @@ boutonValiderHTML.addEventListener('click', () => {
         score++;
         imageElement.src = questionActuelle.img_ville;
         carte.appendChild(imageElement);
-        texteCarte.innerText = "Bravo " + questionActuelle.descriptif;
+        texteCarte.innerText = " BRAVO " + questionActuelle.descriptif;
         console.log(score);
     } else {
-        texteCarte.innerText = "T'es une grosse merde " + questionActuelle.descriptif;
+        texteCarte.innerText = " Dommage !!!!  il s'agit de " + questionActuelle.descriptif;
         console.log(texteCarte);
     }
 });
