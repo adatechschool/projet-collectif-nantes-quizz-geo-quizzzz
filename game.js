@@ -69,9 +69,8 @@ function checkReponse(optionReponse, correctAnswer){//verifie si la reponse est 
   
     if(optionReponse == correctAnswer){
       score++
-      
-      texteCarte="Bravo " + questionActuelle.descriptif
-      
+      texteCarte="Bravo" + questionActuelle.descriptif
+      imageContainer = questionActuelle.img_ville[0];
       console.log(score)
       console.log(texteCarte)
       return true
@@ -183,9 +182,10 @@ boutonSuivantHTML.addEventListener('click', () => {
 // Fonction pour réinitialiser le quiz
 boutonRejouerHTML.addEventListener('click', () => {
 currentQuestionIndex= 0      // TODO Réinitialiser l'index 
-boutonRejouerHTML.style.display = 'none';      // TODO Cacher le bouton Rejouer et afficher le bouton Suivant  
+boutonRejouerHTML.style.display = 'none'; // TODO Cacher le bouton Rejouer et afficher le bouton Suivant  
 boutonSuivantHTML.style.display = 'inline-block'; // Afficher le bouton suivant
 loadQuestion()// TODO Recharger la première question
+
 });
 
 loadQuestion();
