@@ -224,7 +224,8 @@ loadQuestion()// TODO Recharger la première question
 
 loadQuestion() 
 
-function saveScore(score) {
+
+function saveScore(score) {   // fonction qui permets de stocker les scores dans un fichier HTML
   const date = new Date().toLocaleString(); // Date et heure de la partie
   const scoreEntry = { score: score, date: date };
 
