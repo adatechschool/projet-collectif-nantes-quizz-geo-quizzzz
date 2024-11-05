@@ -25,6 +25,7 @@ let score = 0;
 quizQuestionHTML.innerText=firstQuestion.text// Injecter le texte de la question dans l'emplacement dédié
 quizReponseHTML.innerText=firstQuestion.options;
 
+
 // function checkReponse(optionReponse, correctAnswer){//verifie si la reponse est correcte ou non
 //   boutonValiderHTML.addEventListener('click', ()=>{ //au clic sur valider
 //     boutonSuivantHTML.style.display = 'inline-block';
@@ -64,6 +65,24 @@ function checkReponse(optionReponse, correctAnswer) {
     reponseCorrecte = correctAnswer;
     return optionReponse === correctAnswer;
 }
+function checkReponse(optionReponse, correctAnswer){//verifie si la reponse est correcte ou non
+  
+    if(optionReponse == correctAnswer){
+      score++
+      
+      texteCarte="Bravo " + questionActuelle.descriptif
+      
+      console.log(score)
+      console.log(texteCarte)
+      return true
+    } else{
+      console.log("La réponse est fausse")
+      texteCarte="T'es une grosse merde " + questionActuelle.descriptif
+      console.log(texteCarte)
+      return false
+    }
+  }
+
 
 // Ajouter un seul event listener pour le bouton valider
 boutonValiderHTML.addEventListener('click', () => {
