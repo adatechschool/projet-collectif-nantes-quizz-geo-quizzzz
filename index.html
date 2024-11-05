@@ -12,39 +12,45 @@
 <body>
     <header>
         <h1>Le super quiz géo pour être incollable sur les capitales du monde</h1>
-        
     </header>
 
-
-<div class="container">
+<div class="container">  <!-- retrouver l'explication de cetet div ! vs body-->
 
 <main>
     
-<section id="questions">
-    <!-- ici on rentrera les questions-->
-     
-</section>
+    <div class="timer">
+        <div id="circle"></div>
+        <div id="hand"></div>
+    </div>
 
-<section id="reponses">
-    <!-- ici on rentrera les options de réponses et le bouton valider puis suivant-->
-    
-</section>
 
-<section>
-<button id="valider-suivant">SUIVANT / VALIDER</button>
+    <section id="questions">
+        <!-- ici on rentrera les questions-->
+    </section>
 
-</section>
+    <section id="reponses">
+        <!-- ici on rentrera les options de réponses et le bouton valider puis suivant-->
+    </section>
+
+    <section> 
+        <button id="suivant" style="display: none;">SUIVANT</button> <!--le bouton suivant n'apparait pas tant que valider n'est pas cliqué-->
+        <button id="rejouer" style="display: none;">REJOUER</button>
+        <button id="valider">VALIDER</button>
+    </section>
 
 </main>
 
 <aside> 
     <section id="carte">
-        <img class="image-reponse" src="assets\Paris.png" alt ="Tour Eiffel à Paris">
+        <!--<img class="image-reponse">-->
     </section>
 
-    <section id="texteDeLaCarte"><b>Paris, France</b> <br/> Vue emblématique de la Tour Eiffel se dressant au-dessus des rues parisiennes avec ses bâtiments classiques, symbole mondial de la capitale française.</section>
+    <section id="texteDeLaCarte"></section>
+
 </aside>
    
 </div>
+
 </body>
+
 </html>

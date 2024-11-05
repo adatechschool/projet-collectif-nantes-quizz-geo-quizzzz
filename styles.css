@@ -1,82 +1,266 @@
-
-body {
-    padding: 10px;
+/* Variables CSS pour une gestion facile des couleurs */
+:root {
+    --primary-color: #2C6E49; /* Couleur principale pour le header */
+    --secondary-color: #E3C899; /* Couleur de fond pour le aside */
+    --button-bg: blanchedalmond; /* Couleur de fond des boutons */
+    --button-hover: #D97706; /* Couleur de survol pour le bouton valider */
+    --font-color: #333; /* Couleur du texte */
+    --emoji-color: #D97706; /* Couleur pour le contenu emoji */
+    --border-radius: 10px; /* Rayon des bordures */
 }
 
+/* Style du body */
+body {
+    padding: 10px;
+    font-family: 'Schoolbell', cursive; /* Applique la police par défaut */
+    margin: 0; /* Supprime les marges par défaut */
+    background-color: #f9f9f9; /* Couleur de fond douce */
+}
 
+/* Style du header */
 header {
-    background-color: #2C6E49;
-    height: 100px;
-    width: auto;
-    text-align: center;
-    padding: 1%; /*centre texte dans le header => Demander à JF diff entre % et em */
-    margin-bottom: 10px;
-color : white;
+    background-color: var(--primary-color);
+    height: 200px;
+    width: 100%;
+    padding: 1%;
+    margin-bottom: 30px;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-family: 'Just Another Hand', cursive;
+    font-size: 30px;
+}
+
+header::before {
+    content: "🌍"; 
+    font-size: 6em;
+    margin-right: 8px; 
+    animation: rotation 15s linear infinite; /* Ajout de l'animation */
+}
+
+@keyframes rotation {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.header-content {
+    display: center; /* Prend tout l'espace disponible */
+    text-align: center; /* Centre le texte */
 }
 
 /* Le conteneur parent */
 .container {
-    display: flex;        /* Active Flexbox */
-    gap: 10px;           /* Espace entre les éléments */
-    min-height: 100vh;   /* Hauteur minimum pleine page */
+    display: flex; /* Active Flexbox */
+    gap: 10px; /* Espace entre les éléments */
+    min-height: 100vh; /* Hauteur minimum pleine page */
 }
 
 
-main {
-    text-align: center;
-    width: 50%;
-    flex: 1;             /* Équivaut à flex-grow: 1, flex-shrink: 1, flex-basis: 0% */
-    padding: 20px;
-    height : 500px;
-}
-
-.styleQuestion {
-    text-align: center;
-    width: 50%;
-    flex: 1;             /* Équivaut à flex-grow: 1, flex-shrink: 1, flex-basis: 0% */
-    padding: 20px;
-    height : 500px;
-}
-
-aside {
-    background-color: #E3C899;
-    width: 50%;        /* Largeur fixe */
-    padding: 20px;
-    height : 500px;
-}
-
-/* Styes de bouton*/
-.boutonReponse {
-    background-color: blanchedalmond;
-    display: center;
-    margin: 5px;
-    width: 50%;
-    height: 45px;
+/* La barre de progression */
+.progress-container {
+    width: 100%;
+    height: 20px;
+    background-color: #8db4b6;
     border-radius: 10px;
-    box-shadow: 10px 5px 5px grey;
+    margin: 20px 0;
     
 }
-
-#valider-suivant {
-    background-color: #D97706;
-    display: center;
-    margin-top: 75px;
-    width: 50%;
-    height: 25px;
+.progress-bar {
+    width: 0%;
+    height: 100%;
+    background-color: #4CAF50;
     border-radius: 10px;
+    transition: width 0.3s ease;
 }
 
+.progress-text {
+    position: right;
+    width: 100%;
+    text-align: center;
+    top: 25px;
+    font-size: 14px;
+}
+/* Style principal */
+main {
+    text-align: center;
+    flex: 1; /* Équivaut à flex-grow: 1, flex-shrink: 1, flex-basis: 0% */
+    padding: 20px;
+    background-color: white; /* Fond blanc pour le contenu principal */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Ombre douce pour un effet de profondeur */
+}
+
+/* Conteneur du minuteur */
+
+/* Style de la minuterie */
+
+
+.timer {
+    position: relative;
+    width: 100px;
+    height: 100px;
+    font-family: 'Schoolbell', cursive;
+}
+
+/* Cercle extérieur pour le cadre */
+#circle {
+    width: 50%;
+    height: 50%;
+    border: 8px solid #333; /* Bordure noire pour plus de contraste */    
+    border-radius: 50%; /* Rond parfait */
+    box-sizing: border-box;
+    position: absolute;
+    top: 10;
+    left: 10;
+}
+
+/* Aiguille du minuteur */
+#hand {
+    position: absolute;
+    width: 4px;
+    height: 45%;
+    background-color: #FF6B6B; /* Couleur de l'aiguille */
+    top: 5%;
+    left: 15%;
+    transform-origin: bottom;
+    transform: rotate(0deg);
+    animation: tick 5s linear infinite; /* Rotation infinie en 5s */
+}
+
+@keyframes tick {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+
+
+/* Style de la section questions */
+#questions {
+    padding: 20px; /* Espace intérieur */
+    margin: 20px 0; /* Marges autour de la section */
+    color: var(--font-color); /* Couleur du texte */
+    font-family: 'Just Another Hand', cursive;
+    font-size: 25px;
+}
+
+#questions::before {
+    content: "\1F914"; /* Emoji de pensée */
+    font-size: 1.5em; /* Taille de l'emoji */
+    margin-right: 10px; /* Espace à droite de l'emoji */
+}
+
+/* Style des questions */
+.styleQuestion {
+    text-align: center;
+    flex: 1; /* Équivaut à flex-grow: 1, flex-shrink: 1, flex-basis: 0% */
+    padding: 20px;
+    background-color: #fff; /* Fond blanc */
+}
+.bravo {
+    font-weight: bold;
+    font-size: 1.5em;
+}
+.dommage {
+    font-weight: bold;
+    font-size: 1.5em;
+}
+
+
+/* Style des sections aside */
+aside {
+    background-color: var(--secondary-color);
+    flex: 0 0 50%; /* Largeur fixe de 50% */
+    padding: 20px;
+    height: auto; /* Ajuster la hauteur automatiquement */
+}
+
+#valider,
+#suivant,
+#rejouer {
+    background-color: var(--button-bg);
+    margin: 5px auto; /* Centre le bouton avec auto */
+    width: 50%; /* Largeur fixe */
+    height: 45px; /* Hauteur uniforme */
+    border-radius: var(--border-radius); /* Rayon des bordures */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Ombre douce */
+    border: none; /* Enlève la bordure par défaut */
+    cursor: pointer; /* Curseur pointer */
+    display: block; /* Change en block pour le centrage */
+    transition: background-color 0.3s; /* Transition pour un effet de survol */
+}
+/* Styles des boutons */
+.boutonReponse{
+    padding: 40px; /* Espace intérieur */
+    margin: 40px 0; /* Marges autour de la section */
+    color: var(--font-color); /* Couleur du texte */
+    font-family: 'Just Another Hand', cursive;
+    font-size: 25px;
+    align-items: center; /* Centre verticalement */
+    justify-content: center; /* Centre horizontalement */
+    text-align: center; /* Facultatif, utile si le texte comporte plusieurs lignes */
+    vertical-align: baseline;
+    height: auto;
+    padding: 35px; /* Ajout d'un padding pour plus d'espace autour du texte */
+    /* Autres styles ici */
+    background-color: rgba(255, 225, 180, 0.5); /* Couleur de fond par défaut pour les boutons */
+    margin: 5px auto;
+    width: 50%;
+    height: 45px;
+    border-radius: var(--border-radius);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    border: none;
+    cursor: pointer;
+    display: flex;
+    transition: background-color 0.3s, box-shadow 0.3s; /* Ajout de la transition pour la boîte d'ombre */
+}
+
+/* Styles spécifiques aux boutons actifs */
+.boutonReponse.actif {
+    border: 5px inset rgb(255, 180, 100); /* Bordure interne en orange doux */
+    background-color: rgba(255, 225, 180, 0.7); /* Couleur de fond orange doux légèrement transparente */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Ombre pour donner de la profondeur */
+    transition: border-color 0.3s ease, background-color 0.3s ease; /* Transition douce pour l'effet de changement */
+}
+
+
+
+/* État au survol pour un effet supplémentaire */
+.boutonReponse:hover {
+    background-color: rgba(255, 225, 180, 0.8); /* Changez la couleur de fond au survol */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Ombre plus marquée au survol */
+}
+
+/* Styles spécifiques aux boutons de validation */
+#valider {
+    background-color: var(--button-hover);
+    height: 25px; /* Hauteur uniforme */
+}
+
+#suivant,
+#rejouer {
+    height: 25px; /* Hauteur uniforme */
+}
+
+/* Styles pour l'image de réponse */
 .image-reponse {
     width: 350px;
     height: 350px; 
     display: flex; 
     padding: 20px;
-    float: left;
+    float: left; /* Flottement à gauche */
 }
 
-#texteDeLaCarte{
+/* Style du texte de la carte */
+#texteDeLaCarte {
     justify-content: flex-end;
     text-align: center;
-    padding-top: 130px;
+    padding-top: 20px; /* Espace supérieur */
 }
-
