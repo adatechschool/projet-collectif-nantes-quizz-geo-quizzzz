@@ -18,6 +18,8 @@ const boutonValiderHTML = document.getElementById('valider')
 let reponseBouton= document.createElement('button');
 let questionActuelle = quizTableau.questions[currentQuestionIndex];  
 let score = 0;
+const confettiContainer = document.getElementById("confetti-container");
+
 
 //CODE TIMER !!!! 
 
@@ -57,12 +59,37 @@ const totalQuestions = quizTableau.questions.length;
 
 
 quizQuestionHTML.innerText=firstQuestion.text// Injecter le texte de la question dans l'emplacement dédié
+quizReponseHTML.innerText=firstQuestion.options;
+const numberOfConfetti = 30;
+
 
 function updateProgressBar() {
   const progress = ((currentQuestionIndex + 1) / totalQuestions) * 100;
   progressBar.style.width = `${progress}%`;
   progressText.textContent = `Question ${currentQuestionIndex + 1} sur ${totalQuestions}`;
 }
+function generateConfetti() {
+  // Nombre de confettis à générer
+
+  for (let i = 0; i < numberOfConfetti; i++) {
+      // Crée un élément confetti
+      const confetti = document.createElement("div");
+      confetti.classList.add("confetti");
+
+      // Positionne les confettis aléatoirement
+      confetti.style.left = Math.random() * 100 + "%";
+      confetti.style.backgroundColor = getRandomColor();
+
+      // Ajoute le confetti au conteneur
+      confettiContainer.appendChild(confetti);
+
+      // Retire le confetti après l'animation pour ne pas saturer le DOM
+      confetti.addEventListener("animationend", () => {
+          confetti.remove();
+      });
+  }
+}
+
 
 // Déclarer l'event listener pour le bouton valider en dehors de checkReponse
 let reponseSelectionnee = null;
@@ -73,6 +100,7 @@ function checkReponse(optionReponse, correctAnswer) {
     reponseCorrecte = correctAnswer;
     return optionReponse === correctAnswer;
 }
+
 
 // Ajouter un seul event listener pour le bouton valider
 boutonValiderHTML.addEventListener('click', () => {
@@ -90,6 +118,7 @@ boutonValiderHTML.addEventListener('click', () => {
     carte.style.float = 'center';
 
     if (reponseSelectionnee === reponseCorrecte) {
+      generateConfetti();
         score++;
         imageElement.src = questionActuelle.img_ville;
         carte.appendChild(imageElement);
@@ -166,6 +195,12 @@ function loadNextQuestion() { //AJOUT
 }
 
 
+// Fonction pour générer une couleur aléatoire
+function getRandomColor() {
+  const colors = ["#FF6347", "#FFD700", "#7FFF00", "#00BFFF", "#FF69B4"];
+  return colors[Math.floor(Math.random() * colors.length)];
+}
+
 // Ajouter un écouteur d'événements pour le bouton "Suivant"
 boutonSuivantHTML.addEventListener('click', () => {
   // Incrémenter l'index de la question
@@ -186,17 +221,65 @@ boutonSuivantHTML.addEventListener('click', () => {
     boutonValiderHTML.style.display = 'none'; //Cacher le bouton Valider
     quizQuestionHTML.innerText="";
     boutonRejouerHTML.style.display = 'inline-block';
-  }
-});
+    boutonValiderHTML.style.display = 'none';   // Cacher le bouton Valider
+    texteCarte.style.display = 'inline-block';   // Afficher un message texte carte
+    texteCarte.innerText = "Bravo tu as obtenu un score de " + score + " sur " + quizTableau.questions.length + " Félicitations ! 🎉 " // Afficher le commentaire du texteCarte
+  console.log(texteCarte.innerText)
+};
+})
 
 // Fonction pour réinitialiser le quiz
 boutonRejouerHTML.addEventListener('click', () => {
 currentQuestionIndex= 0      // TODO Réinitialiser l'index 
-boutonRejouerHTML.style.display = 'none';      // TODO Cacher le bouton Rejouer et afficher le bouton Suivant  
+boutonRejouerHTML.style.display = 'none'; // TODO Cacher le bouton Rejouer et afficher le bouton Suivant  
 boutonSuivantHTML.style.display = 'inline-block'; // Afficher le bouton suivant
 loadQuestion()// TODO Recharger la première question
+
 });
 
-loadQuestion()
+loadQuestion() 
 
 
+function saveScore(score) {   // fonction qui permets de stocker les scores dans un fichier HTML
+  const date = new Date().toLocaleString(); // Date et heure de la partie
+  const scoreEntry = { score: score, date: date };
+
+  // Récupère les scores existants ou initialise un tableau vide
+  let scores = JSON.parse(localStorage.getItem("quizScores")) || [];
+  scores.push(scoreEntry);
+
+  // Sauvegarde la liste des scores mise à jour dans le localStorage
+  localStorage.setItem("quizScores", JSON.stringify(scores));
+}
+console.log(saveScore);
+
+// Appelle la fonction lorsque le quiz est terminé
+function endQuiz(score) {
+  saveScore(score);
+  // Afficher le score ou rediriger vers la page de scores ici
+  window.location.href = "scores.html"; // Redirige vers la page de scores
+}
+// Fonction pour charger et afficher les scores
+function displayScores() {
+  const scoresList = document.getElementById("scores-list");
+  const scores = JSON.parse(localStorage.getItem("quizScores")) || [];
+
+  if (scores.length === 0) {
+      scoresList.innerHTML = "<p>Aucun score enregistré pour l'instant.</p>";
+      console.log(scoresList);
+  } else {
+      scoresList.innerHTML = scores
+          .map((entry, index) => `<p>Partie ${index + 1}: ${entry.score} points - ${entry.date}</p>`)
+          .join("");
+  }
+}
+
+// Fonction pour effacer les scores
+function clearScores() {
+  localStorage.removeItem("quizScores");
+  displayScores(); // Recharge la liste des scores après suppression
+}
+
+// Appelle `displayScores` lors du chargement de la page
+
+document.addEventListener("DOMContentLoaded", displayScores);

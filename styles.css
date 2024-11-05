@@ -184,6 +184,39 @@ aside {
 
 #valider,
 #suivant,
+
+.boutonReponse.actif {
+    background-color: blanchedalmond;
+    border-style: inset;
+    border-color: rgb(155, 102, 17);
+    border-width: 5px;
+    display: center;
+    margin: 5px;
+    width: 50%;
+    height: 45px;
+    border-radius: 10px;
+    box-shadow: 10px 5px 5px grey;
+    
+}
+
+#valider {
+    background-color: #D97706;
+    display: center;
+    margin-top: 75px;
+    width: 50%;
+    height: 25px;
+    border-radius: 10px;
+}
+
+#suivant {
+    background-color: #d440be;
+    display: center;
+    margin-top: 75px;
+    width: 50%;
+    height: 25px;
+    border-radius: 10px;
+}
+
 #rejouer {
     background-color: var(--button-bg);
     margin: 5px auto; /* Centre le bouton avec auto */
