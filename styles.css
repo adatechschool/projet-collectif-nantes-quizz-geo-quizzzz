@@ -106,42 +106,6 @@ main {
     font-family: 'Schoolbell', cursive;
 }
 
-/* Cercle extérieur pour le cadre */
-#circle {
-    width: 50%;
-    height: 50%;
-    border: 8px solid #333; /* Bordure noire pour plus de contraste */    
-    border-radius: 50%; /* Rond parfait */
-    box-sizing: border-box;
-    position: absolute;
-    top: 10;
-    left: 10;
-}
-
-/* Aiguille du minuteur */
-#hand {
-    position: absolute;
-    width: 4px;
-    height: 45%;
-    background-color: #FF6B6B; /* Couleur de l'aiguille */
-    top: 5%;
-    left: 15%;
-    transform-origin: bottom;
-    transform: rotate(0deg);
-    animation: tick 5s linear infinite; /* Rotation infinie en 5s */
-}
-
-@keyframes tick {
-    from {
-        transform: rotate(0deg);
-    }
-    to {
-        transform: rotate(360deg);
-    }
-}
-
-
-
 /* Style de la section questions */
 #questions {
     padding: 20px; /* Espace intérieur */
@@ -182,29 +146,15 @@ aside {
     height: auto; /* Ajuster la hauteur automatiquement */
 }
 
-#valider,
-#suivant,
 
-.boutonReponse.actif {
-    background-color: blanchedalmond;
-    border-style: inset;
-    border-color: rgb(155, 102, 17);
-    border-width: 5px;
-    display: center;
-    margin: 5px;
-    width: 50%;
-    height: 45px;
-    border-radius: 10px;
-    box-shadow: 10px 5px 5px grey;
-    
-}
+
 
 #valider {
     background-color: #D97706;
     display: center;
     margin-top: 75px;
     width: 50%;
-    height: 25px;
+    height: 45px;
     border-radius: 10px;
 }
 
@@ -215,7 +165,7 @@ aside {
     width: 50%;
     height: 25px;
     border-radius: 10px;
-}
+}   
 
 #rejouer {
     background-color: var(--button-bg);

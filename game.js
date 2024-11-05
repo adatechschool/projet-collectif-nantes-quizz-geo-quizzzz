@@ -25,7 +25,7 @@ const confettiContainer = document.getElementById("confetti-container");
 
 let timer;                // Variable pour stocker le timer
 let timeRemaining = 15;   // Temps initial en secondes
-let timerElement = document.getElementsByClassName('timer');  // Élément HTML pour afficher le timer
+let timerElement = document.getElementById('timer');  // Élément HTML pour afficher le timer
 
 
 function startTimer() { //AJOUT
