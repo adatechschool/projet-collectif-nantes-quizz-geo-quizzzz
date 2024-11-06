@@ -17,26 +17,39 @@ body {
     background-color: #f9f9f9; /* Couleur de fond douce */
 }
 
+/* Style du body */
+body {
+    padding: 10px;
+    font-family: 'crative chalk', cursive; /*Applique la police par défaut */
+    margin: 0; /* Supprime les marges par défaut */
+    background-image: url('assets/TableuV3.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+}
+
 /* Style du header */
 header {
-    background-color: var(--primary-color);
-    height: 200px;
+    height: 100px;
     width: 100%;
-    padding: 1%;
-    margin-bottom: 30px;
+    padding-top: 8%;
+    margin-bottom: 15px;
     color: white;
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    font-family: 'Just Another Hand', cursive;
-    font-size: 30px;
+    justify-content: center;
+    font-family: 'Caveat', cursive;
+    font-size: 20px;
+
 }
+
 
 header::before {
     content: "🌍"; 
-    font-size: 6em;
-    margin-right: 8px; 
-    animation: rotation 15s linear infinite; /* Ajout de l'animation */
+    font-size: 5em;
+    margin-right: 2px;
+    /*animation: rotation 15s linear infinite; /* Ajout de l'animation */
 }
 
 @keyframes rotation {
@@ -60,20 +73,67 @@ header::before {
     min-height: 100vh; /* Hauteur minimum pleine page */
 }
 
+#timer{
+    position: relative;
+    padding-left: 10px;
+    font-size: 13px;
+}
+
+/* Conteneur principal */
+#chronometre {
+    display: flex;
+    align-items: center;
+    margin-left: 170px; /* Valeur négative pour décaler vers la gauche */
+    margin-top: 70px;
+}
+
+/* Cercle du chronomètre */
+.cercle {
+    position: relative;
+    width: 50px;
+    height: 50px;
+    border: 3px solid var(--chrono-border);    border-radius: 30%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--chrono-bg);
+}
+
+/* Aiguille des secondes */
+.aiguille-seconde {
+    position: absolute;
+    width: 2px;
+    height: 20px;
+    background-color: #FF6B6B;
+    transform-origin: bottom;
+    top: 10px;
+    transition: transform 0.50s ease; /* Transition pour adoucir la rotation */
+}
+
+/* Animation de rotation pour les secondes */
+@keyframes rotationSecondes {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
 
 /* La barre de progression */
 .progress-container {
-    width: 100%;
+    width: 70%;
     height: 20px;
-    background-color: #8db4b6;
+    background-color: var(--progress-bg);
     border-radius: 10px;
-    margin: 20px 0;
+    margin-top: 90px;
+    margin-left: 55px;
     
 }
 .progress-bar {
     width: 0%;
     height: 100%;
-    background-color: #4CAF50;
+    background-color: var(--progress-bar);
     border-radius: 10px;
     transition: width 0.3s ease;
 }
@@ -90,68 +150,26 @@ main {
     text-align: center;
     flex: 1; /* Équivaut à flex-grow: 1, flex-shrink: 1, flex-basis: 0% */
     padding: 20px;
-    background-color: white; /* Fond blanc pour le contenu principal */
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Ombre douce pour un effet de profondeur */
+    /* background-color: white; /* Fond blanc pour le contenu principal */
+    /*box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Ombre douce pour un effet de profondeur */
+    /* background-color: rgba(112, 104, 18, 0.2); */
+    /* backdrop-filter: blur(10px); */
+    /* border: 1px solid rgba(255, 255, 255, 0.3); */
+
 }
-
-/* Conteneur du minuteur */
-
-/* Style de la minuterie */
-
-
-.timer {
-    position: relative;
-    width: 100px;
-    height: 100px;
-    font-family: 'Schoolbell', cursive;
-}
-
-/* Cercle extérieur pour le cadre */
-#circle {
-    width: 50%;
-    height: 50%;
-    border: 8px solid #333; /* Bordure noire pour plus de contraste */    
-    border-radius: 50%; /* Rond parfait */
-    box-sizing: border-box;
-    position: absolute;
-    top: 10;
-    left: 10;
-}
-
-/* Aiguille du minuteur */
-#hand {
-    position: absolute;
-    width: 4px;
-    height: 45%;
-    background-color: #FF6B6B; /* Couleur de l'aiguille */
-    top: 5%;
-    left: 15%;
-    transform-origin: bottom;
-    transform: rotate(0deg);
-    animation: tick 5s linear infinite; /* Rotation infinie en 5s */
-}
-
-@keyframes tick {
-    from {
-        transform: rotate(0deg);
-    }
-    to {
-        transform: rotate(360deg);
-    }
-}
-
-
 
 /* Style de la section questions */
 #questions {
     padding: 20px; /* Espace intérieur */
     margin: 20px 0; /* Marges autour de la section */
-    color: var(--font-color); /* Couleur du texte */
+    color: var(--craie-blanche);
     font-family: 'Just Another Hand', cursive;
     font-size: 25px;
+    margin-top: 40px;
+    margin-left: 50px;
 }
 
-#questions::before {
+#questions::after {
     content: "\1F914"; /* Emoji de pensée */
     font-size: 1.5em; /* Taille de l'emoji */
     margin-right: 10px; /* Espace à droite de l'emoji */
@@ -176,16 +194,55 @@ main {
 
 /* Style des sections aside */
 aside {
-    background-color: var(--secondary-color);
-    flex: 0 0 50%; /* Largeur fixe de 50% */
+    /* background-color: var(--secondary-color); */
+    flex: 0 0 50%; /*Largeur fixe de 50%*/
     padding: 20px;
     height: auto; /* Ajuster la hauteur automatiquement */
+    /* background-color: rgba(112, 104, 18, 0.2); */
+    /* backdrop-filter: blur(10px); */
+    /* border: 1px solid rgba(255, 255, 255, 0.3); */
 }
 
-#valider,
-#suivant,
+#messageResultat {
+    padding: 20px; /* Espace intérieur */
+    margin: 20px 0; /* Marges autour de la section */
+    color: var(--font-color); /* Couleur du texte */
+    font-family: 'Just Another Hand', cursive;
+    font-size: 25px;
+}
+#valider{
+    background-color: var(--bouton-valider);
+    margin: 5px auto; /* Centre le bouton avec auto */
+    width: 50%; /* Largeur fixe */
+    height: 45px; /* Hauteur uniforme */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Ombre douce */
+    border: none; /* Enlève la bordure par défaut */
+    cursor: pointer; /* Curseur pointer */
+    display: block; /* Change en block pour le centrage */
+    margin-top: 15px;
+    font-family: 'Just Another Hand', cursive;
+    border-radius: var(--border-radius);
+    /* background-color: var(--button-hover); */
+    
+}
+#suivant{
+    background-color: var(--bouton-suivant);
+    color: black;
+    margin: 5px auto; /* Centre le bouton avec auto */
+    width: 50%; /* Largeur fixe */
+    height: 45px; /* Hauteur uniforme */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Ombre douce */
+    border: none; /* Enlève la bordure par défaut */
+    cursor: pointer; /* Curseur pointer */
+    display: block; /* Change en block pour le centrage */
+    transition: background-color 0.3s; /* Transition pour un effet de survol */
+    font-family: 'Just Another Hand', cursive;
+    margin-top: 15px;
+    border-radius: var(--border-radius);
+
+}
 #rejouer {
-    background-color: var(--button-bg);
+    background-color: var(--bouton-reponse);    
     margin: 5px auto; /* Centre le bouton avec auto */
     width: 50%; /* Largeur fixe */
     height: 45px; /* Hauteur uniforme */
@@ -193,14 +250,15 @@ aside {
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Ombre douce */
     border: none; /* Enlève la bordure par défaut */
     cursor: pointer; /* Curseur pointer */
+    color: #333;
     display: block; /* Change en block pour le centrage */
     transition: background-color 0.3s; /* Transition pour un effet de survol */
 }
+
 /* Styles des boutons */
 .boutonReponse{
     padding: 40px; /* Espace intérieur */
     margin: 40px 0; /* Marges autour de la section */
-    color: var(--font-color); /* Couleur du texte */
     font-family: 'Just Another Hand', cursive;
     font-size: 25px;
     align-items: center; /* Centre verticalement */
@@ -209,8 +267,8 @@ aside {
     vertical-align: baseline;
     height: auto;
     padding: 35px; /* Ajout d'un padding pour plus d'espace autour du texte */
+    
     /* Autres styles ici */
-    background-color: rgba(255, 225, 180, 0.5); /* Couleur de fond par défaut pour les boutons */
     margin: 5px auto;
     width: 50%;
     height: 45px;
@@ -219,13 +277,15 @@ aside {
     border: none;
     cursor: pointer;
     display: flex;
+    background-color: var(--bouton-reponse);
+    color: #333; 
     transition: background-color 0.3s, box-shadow 0.3s; /* Ajout de la transition pour la boîte d'ombre */
 }
 
 /* Styles spécifiques aux boutons actifs */
 .boutonReponse.actif {
-    border: 5px inset rgb(255, 180, 100); /* Bordure interne en orange doux */
-    background-color: rgba(255, 225, 180, 0.7); /* Couleur de fond orange doux légèrement transparente */
+    border: 3px solid var(--craie-blanche);   /* Bordure plus subtile */
+    background-color: var(--bouton-hover);
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Ombre pour donner de la profondeur */
     transition: border-color 0.3s ease, background-color 0.3s ease; /* Transition douce pour l'effet de changement */
 }
@@ -238,15 +298,19 @@ aside {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Ombre plus marquée au survol */
 }
 
-/* Styles spécifiques aux boutons de validation */
-#valider {
-    background-color: var(--button-hover);
+
+
+#rejouer {
     height: 25px; /* Hauteur uniforme */
 }
 
-#suivant,
-#rejouer {
-    height: 25px; /* Hauteur uniforme */
+#image-par-defaut{
+    width: 700px;         
+    height: auto;         /* Hauteur ajustée pour garder les proportions */
+    display: block;
+    margin-top : 20px;
+    margin-right: auto;
+    margin-left: 20px;
 }
 
 /* Styles pour l'image de réponse */
@@ -260,7 +324,79 @@ aside {
 
 /* Style du texte de la carte */
 #texteDeLaCarte {
-    justify-content: flex-end;
+    display: flex;
+    flex-direction: column; /* Pour que le texte s'empile en vertical */
+    justify-content: center; /* Centre le contenu verticalement */
+    align-items: center; /* Centre le contenu horizontalement */
     text-align: center;
-    padding-top: 20px; /* Espace supérieur */
+    padding-top: 20px;
+    color: #fff;
+    width: 350px;
+    height: 350px;    
+    margin-left: 300px; /* Espace entre l'image et le texte */
+    margin-right: auto;
+    font-size: 25px;
+}
+
+/* Conteneur des paillettes */
+.sparkle-container {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    pointer-events: none;
+    z-index: 1000;
+}
+
+/* Paillette de base */
+.sparkle {
+    position: absolute;
+    bottom: 0;
+    opacity: 0;
+    animation: sparkleUp 3s ease-in-out infinite;
+    transform-origin: center;
+}
+
+/* Paillettes circulaires */
+.sparkle.circle {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background-color: rgba(255, 223, 0, 0.9); /* Jaune doré */
+    box-shadow: 0 0 8px rgba(255, 223, 0, 0.6);
+}
+
+/* Paillettes en losange */
+.sparkle.diamond {
+    width: 8px;
+    height: 8px;
+    background-color: rgba(255, 105, 180, 0.8); /* Rose clair */
+    transform: rotate(45deg); /* Rotation pour l'effet losange */
+    box-shadow: 0 0 10px rgba(255, 105, 180, 0.5);
+}
+
+/* Paillettes en étoile */
+.sparkle.star {
+    width: 10px;
+    height: 10px;
+    clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+    background-color: rgba(173, 216, 230, 0.9); /* Bleu pastel */
+    box-shadow: 0 0 12px rgba(173, 216, 230, 0.6);
+}
+
+/* Animation de montée */
+@keyframes sparkleUp {
+    0% {
+        transform: translateY(0) scale(0.5);
+        opacity: 0;
+    }
+    25% {
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(-100vh) scale(1.5);
+        opacity: 0;
+    }
 }

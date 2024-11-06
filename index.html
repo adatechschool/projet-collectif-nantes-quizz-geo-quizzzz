@@ -7,6 +7,10 @@
     <title>Le super Géo Quizzzz</title>
     <link rel="stylesheet" href="styles.css">
     <script type="module" defer src="game.js"></script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fredericka+the+Great&display=swap" rel="stylesheet">
 </head>
 
 <body>
@@ -17,16 +21,14 @@
 <div class="container">  <!-- retrouver l'explication de cetet div ! vs body-->
 
 <main>
-    
-    <div class="timer">
-        <div id="circle"></div>
-        <div id="hand"></div>
-    </div>
-
+    <div class="sparkle-container"></div>
+    <div id="timer"></div>
 
     <section id="questions">
         <!-- ici on rentrera les questions-->
     </section>
+
+    <section id="messageResultat"></section>
 
     <section id="reponses">
         <!-- ici on rentrera les options de réponses et le bouton valider puis suivant-->
@@ -34,15 +36,19 @@
 
     <section> 
         <button id="suivant" style="display: none;">SUIVANT</button> <!--le bouton suivant n'apparait pas tant que valider n'est pas cliqué-->
-        <button id="rejouer" style="display: none;">REJOUER</button>
+        <button id="rejouer" style="display: none;"><a href="accueil.html">REJOUER</a></button>      
         <button id="valider">VALIDER</button>
     </section>
 
 </main>
 
 <aside> 
+    <div class="progress-container">
+        <div class="progress-bar" id="progress-bar"></div>
+        <div class="progress-text" id="progress-text">Question 1 sur X</div>
+    </div>
     <section id="carte">
-        <!--<img class="image-reponse">-->
+        <img id="image-par-defaut" src="assets/carte.png" alt="Carte de géographie" />
     </section>
 
     <section id="texteDeLaCarte"></section>

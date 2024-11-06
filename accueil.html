@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz Géographie et Histoire</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family:  'Schoolbell', cursive;;
+        }
+
+        body {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background-color:  #f9f9f9;
+            padding: 20px;
+            background-image: url('assets/book-banner-background-.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        
+        }
+
+        .container {
+            text-align: center;
+            background-color: rgb(18, 104, 19);
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            max-width: 600px;
+            width: 90%;
+            background-color: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(1px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        h1 {
+            color: #333;
+            margin-bottom: 1.5rem;
+        }
+
+        .buttons {
+            display: flex;
+            flex-direction: row; /* Changé de column à row */
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .quiz-button {
+            padding: 1rem 2rem;
+            font-size: 1.1rem;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: transform 0.2s;
+            font-weight: bold;
+            width: 400px; /* Largeur fixe pour les boutons */
+        }
+
+        .quiz-button:hover {
+            transform: scale(1.1);
+        }
+
+        .geography {
+            background-color: #4CAF50;
+            color: white;
+        }
+
+        .history {
+            background-color: #2196F3;
+            color: white;
+        }
+
+        /* Responsive design pour petits écrans */
+        @media (max-width: 500px) {
+            .buttons {
+                flex-direction: column;
+            }
+            
+            .quiz-button {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Bienvenue sur notre Quiz !</h1>
+        <p>Choisissez votre thème :</p>
+        <div class="buttons">
+            <!-- <button class="quiz-button geography">Quiz de Géographie</button> -->
+            <a href="index.html" class="quiz-button geography">Le Géo-Quizzz</a>
+            <a href="index2.html" class="quiz-button history">Le History-quizzz</a>
+        </div>
+    </div>
+</body>
+</html>
