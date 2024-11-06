@@ -70,12 +70,12 @@ function updateProgressBar() {
 }
 function generateConfetti() {
   // Nombre de confettis à générer
-
+console.log("toto")
   for (let i = 0; i < numberOfConfetti; i++) {
       // Crée un élément confetti
       const confetti = document.createElement("div");
       confetti.classList.add("confetti");
-
+console.log("toto2")
       // Positionne les confettis aléatoirement
       confetti.style.left = Math.random() * 100 + "%";
       confetti.style.backgroundColor = getRandomColor();
@@ -83,9 +83,9 @@ function generateConfetti() {
       // Ajoute le confetti au conteneur
       confettiContainer.appendChild(confetti);
 
-      // Retire le confetti après l'animation pour ne pas saturer le DOM
+      //Retire le confetti après l'animation pour ne pas saturer le DOM
       confetti.addEventListener("animationend", () => {
-          confetti.remove();
+         confetti.remove();
       });
   }
 }
