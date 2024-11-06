@@ -6,21 +6,26 @@
 
 /* Variables CSS pour une gestion facile des couleurs */
 :root {
-    --primary-color: #2C6E49; /* Couleur principale pour le header */
-    --secondary-color: #E3C899; /* Couleur de fond pour le aside */
-    --button-bg: blanchedalmond; /* Couleur de fond des boutons */
-    --button-hover: #D97706; /* Couleur de survol pour le bouton valider */
-    --font-color: #c3dee0; /* Couleur du texte */
-    --emoji-color: #D97706; /* Couleur pour le contenu emoji */
-    --border-radius: 10px; /* Rayon des bordures */
+    /* Nouvelles couleurs */
+    --craie-blanche: rgba(255, 255, 255, 0.9);      /* Pour le texte principal */
+    --bouton-reponse: rgba(255, 240, 200, 0.7);     /* Pour les boutons de réponse - teinte douce */
+    --bouton-valider: rgba(141, 199, 63, 0.85);     /* Vert doux pour le bouton valider */
+    --bouton-hover: rgba(255, 180, 100, 0.8);       /* Orange doux pour hover */
+    --progress-bar: rgba(141, 199, 63, 0.85);       /* Vert doux pour la progression */
+    --progress-bg: rgba(255, 255, 255, 0.3);        /* Fond de progression */
+    --chrono-border: rgba(255, 255, 255, 0.7);      /* Bordure du chronomètre */
+    --chrono-bg: rgba(255, 255, 255, 0.15);         /* Fond du chronomètre */
+    --border-radius: 10px;                          /* Gardé de votre code */
+    --font-color: rgba(255, 255, 255, 0.9);         /* Nouveau texte en blanc */
+    --bouton-suivant : rgba(236, 180, 25, 0.7);     /* Pour les boutons de réponse - teinte douce */
 }
+
 
 /* Style du body */
 body {
     padding: 10px;
-    font-family: "Fredericka the Great", serif; /*Applique la police par défaut */
+    font-family: 'crative chalk', cursive; /*Applique la police par défaut */
     margin: 0; /* Supprime les marges par défaut */
-    background-color: #ffffff; /* Couleur de fond douce */
     background-image: url('assets/TableuV3.jpg');
     background-size: cover;
     background-position: center;
@@ -30,28 +35,25 @@ body {
 
 /* Style du header */
 header {
-    /* background-color: var(--primary-color); */
-    height: 200px;
+    height: 100px;
     width: 100%;
-    padding: 1%;
-    margin-bottom: 30px;
-    color: rgb(255, 255, 255);
+    padding-top: 8%;
+    margin-bottom: 15px;
+    color: white;
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    font-family: 'Chalk Hand Lettering', cursive;
-    font-size: 30px;
-    /* background-color: rgba(12, 149, 65, 0.475); */
-    /* backdrop-filter: blur(50px); */
-    /* border: 1px solid rgba(255, 255, 255, 0.3); */
-    
+    justify-content: center;
+    font-family: 'Caveat', cursive;
+    font-size: 20px;
+
 }
+
 
 header::before {
     content: "🌍"; 
-    font-size: 6em;
-    margin-right: 8px; 
-    animation: rotation 15s linear infinite; /* Ajout de l'animation */
+    font-size: 5em;
+    margin-right: 2px;
+    /*animation: rotation 15s linear infinite; /* Ajout de l'animation */
 }
 
 @keyframes rotation {
@@ -75,20 +77,67 @@ header::before {
     min-height: 100vh; /* Hauteur minimum pleine page */
 }
 
+#timer{
+    position: relative;
+    padding-left: 10px;
+    font-size: 13px;
+}
+
+/* Conteneur principal */
+#chronometre {
+    display: flex;
+    align-items: center;
+    margin-left: 170px; /* Valeur négative pour décaler vers la gauche */
+    margin-top: 70px;
+}
+
+/* Cercle du chronomètre */
+.cercle {
+    position: relative;
+    width: 50px;
+    height: 50px;
+    border: 3px solid var(--chrono-border);    border-radius: 30%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--chrono-bg);
+}
+
+/* Aiguille des secondes */
+.aiguille-seconde {
+    position: absolute;
+    width: 2px;
+    height: 20px;
+    background-color: #FF6B6B;
+    transform-origin: bottom;
+    top: 10px;
+    transition: transform 0.50s ease; /* Transition pour adoucir la rotation */
+}
+
+/* Animation de rotation pour les secondes */
+@keyframes rotationSecondes {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
 
 /* La barre de progression */
 .progress-container {
-    width: 100%;
+    width: 70%;
     height: 20px;
-    background-color: #8db4b6;
+    background-color: var(--progress-bg);
     border-radius: 10px;
-    margin: 20px 0;
+    margin-top: 90px;
+    margin-left: 55px;
     
 }
 .progress-bar {
     width: 0%;
     height: 100%;
-    background-color: #4CAF50;
+    background-color: var(--progress-bar);
     border-radius: 10px;
     transition: width 0.3s ease;
 }
@@ -107,22 +156,24 @@ main {
     padding: 20px;
     /* background-color: white; /* Fond blanc pour le contenu principal */
     /*box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Ombre douce pour un effet de profondeur */
-    /* background-color: rgba(112, 104, 18, 0.2);
-    backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 255, 255, 0.3); */
+    /* background-color: rgba(112, 104, 18, 0.2); */
+    /* backdrop-filter: blur(10px); */
+    /* border: 1px solid rgba(255, 255, 255, 0.3); */
 
 }
 
 /* Style de la section questions */
-#questions.fredericka-the-great-regular {
+#questions {
     padding: 20px; /* Espace intérieur */
     margin: 20px 0; /* Marges autour de la section */
-    color: var(--font-color); /* Couleur du texte */
-    /*font-family: 'Chalk Hand Lettering';*/
-    font-size:80px;
+    color: var(--craie-blanche);
+    font-family: 'Just Another Hand', cursive;
+    font-size: 25px;
+    margin-top: 40px;
+    margin-left: 50px;
 }
 
-#questions::before {
+#questions::after {
     content: "\1F914"; /* Emoji de pensée */
     font-size: 1.5em; /* Taille de l'emoji */
     margin-right: 10px; /* Espace à droite de l'emoji */
@@ -147,13 +198,13 @@ main {
 
 /* Style des sections aside */
 aside {
-    background-color: var(--secondary-color);
-    flex: 0 0 50%; /* Largeur fixe de 50% */
+    /* background-color: var(--secondary-color); */
+    flex: 0 0 50%; /*Largeur fixe de 50%*/
     padding: 20px;
     height: auto; /* Ajuster la hauteur automatiquement */
-    background-color: rgba(112, 104, 18, 0.2);
-    backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 255, 255, 0.3);
+    /* background-color: rgba(112, 104, 18, 0.2); */
+    /* backdrop-filter: blur(10px); */
+    /* border: 1px solid rgba(255, 255, 255, 0.3); */
 }
 
 #messageResultat {
@@ -163,11 +214,39 @@ aside {
     font-family: 'Just Another Hand', cursive;
     font-size: 25px;
 }
+#valider{
+    background-color: var(--bouton-valider);
+    margin: 5px auto; /* Centre le bouton avec auto */
+    width: 50%; /* Largeur fixe */
+    height: 45px; /* Hauteur uniforme */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Ombre douce */
+    border: none; /* Enlève la bordure par défaut */
+    cursor: pointer; /* Curseur pointer */
+    display: block; /* Change en block pour le centrage */
+    margin-top: 15px;
+    font-family: 'Just Another Hand', cursive;
+    border-radius: var(--border-radius);
+    /* background-color: var(--button-hover); */
+    
+}
+#suivant{
+    background-color: var(--bouton-suivant);
+    color: black;
+    margin: 5px auto; /* Centre le bouton avec auto */
+    width: 50%; /* Largeur fixe */
+    height: 45px; /* Hauteur uniforme */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Ombre douce */
+    border: none; /* Enlève la bordure par défaut */
+    cursor: pointer; /* Curseur pointer */
+    display: block; /* Change en block pour le centrage */
+    transition: background-color 0.3s; /* Transition pour un effet de survol */
+    font-family: 'Just Another Hand', cursive;
+    margin-top: 15px;
+    border-radius: var(--border-radius);
 
-#valider,
-#suivant,
+}
 #rejouer {
-    background-color: var(--button-bg);
+    background-color: var(--bouton-reponse);    
     margin: 5px auto; /* Centre le bouton avec auto */
     width: 50%; /* Largeur fixe */
     height: 45px; /* Hauteur uniforme */
@@ -175,15 +254,16 @@ aside {
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Ombre douce */
     border: none; /* Enlève la bordure par défaut */
     cursor: pointer; /* Curseur pointer */
+    color: #333;
     display: block; /* Change en block pour le centrage */
     transition: background-color 0.3s; /* Transition pour un effet de survol */
 }
+
 /* Styles des boutons */
 .boutonReponse{
     padding: 40px; /* Espace intérieur */
     margin: 40px 0; /* Marges autour de la section */
-    color: var(--font-color); /* Couleur du texte */
-    font-family: 'Chalk Hand Lettering', cursive;
+    font-family: 'Just Another Hand', cursive;
     font-size: 25px;
     align-items: center; /* Centre verticalement */
     justify-content: center; /* Centre horizontalement */
@@ -191,8 +271,8 @@ aside {
     vertical-align: baseline;
     height: auto;
     padding: 35px; /* Ajout d'un padding pour plus d'espace autour du texte */
+    
     /* Autres styles ici */
-    background-color: rgba(255, 225, 180, 0.5); /* Couleur de fond par défaut pour les boutons */
     margin: 5px auto;
     width: 50%;
     height: 45px;
@@ -201,16 +281,19 @@ aside {
     border: none;
     cursor: pointer;
     display: flex;
+    background-color: var(--bouton-reponse);
+    color: #333; 
     transition: background-color 0.3s, box-shadow 0.3s; /* Ajout de la transition pour la boîte d'ombre */
 }
 
 /* Styles spécifiques aux boutons actifs */
 .boutonReponse.actif {
-    border: 5px inset rgb(255, 180, 100); /* Bordure interne en orange doux */
-    background-color: rgba(255, 225, 180, 0.7); /* Couleur de fond orange doux légèrement transparente */
+    border: 3px solid var(--craie-blanche);   /* Bordure plus subtile */
+    background-color: var(--bouton-hover);
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Ombre pour donner de la profondeur */
     transition: border-color 0.3s ease, background-color 0.3s ease; /* Transition douce pour l'effet de changement */
 }
+
 
 
 
@@ -220,15 +303,19 @@ aside {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Ombre plus marquée au survol */
 }
 
-/* Styles spécifiques aux boutons de validation */
-#valider {
-    background-color: var(--button-hover);
+
+
+#rejouer {
     height: 25px; /* Hauteur uniforme */
 }
 
-#suivant,
-#rejouer {
-    height: 25px; /* Hauteur uniforme */
+#image-par-defaut{
+    width: 700px;         
+    height: auto;         /* Hauteur ajustée pour garder les proportions */
+    display: block;
+    margin-top : 20px;
+    margin-right: auto;
+    margin-left: 20px;
 }
 
 /* Styles pour l'image de réponse */
@@ -242,9 +329,17 @@ aside {
 
 /* Style du texte de la carte */
 #texteDeLaCarte {
-    justify-content: flex-end;
+    display: flex;
+    flex-direction: column; /* Pour que le texte s'empile en vertical */
+    justify-content: center; /* Centre le contenu verticalement */
+    align-items: center; /* Centre le contenu horizontalement */
     text-align: center;
-    padding-top: 20px; /* Espace supérieur */
+    padding-top: 20px;
+    color: #fff;
+    width: 350px;
+    height: 350px;    
+    margin-left: 220px; /* Espace entre l'image et le texte */
+    margin-right: auto;
 }
 
 /* Conteneur des paillettes */

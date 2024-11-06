@@ -29,6 +29,10 @@ const numberOfSparkles = 500;
 const sparkleContainer = document.querySelector(".sparkle-container");
 const sparkleTypes = ["circle", "diamond", "star"]; // Différentes formes
 
+//image par defaut
+let carteParDefaut = document.getElementById('image-par-defaut')
+
+
 
 
 quizQuestionHTML.innerText=firstQuestion.text// Injecter le texte de la question dans l'emplacement dédié
@@ -87,6 +91,7 @@ boutonValiderHTML.addEventListener('click', () => {
     carte.style.paddingTop = '8%'
     carte.style.float = 'center';
 
+    carteParDefaut.style.display='none';
     if (reponseSelectionnee === reponseCorrecte) {
       showSparkles();
         score++;
@@ -150,6 +155,7 @@ boutonSuivantHTML.addEventListener('click', () => {
   boutonValiderHTML.style.display = 'inline-block';
   carte.style.display = 'none'
   texteCarte.style.display = 'none'
+  carteParDefaut.style.display='block';
   // Vérifier s'il reste des questions
   if (currentQuestionIndex < quizTableau.questions.length) {
     // Afficher la question suivante
@@ -162,6 +168,7 @@ boutonSuivantHTML.addEventListener('click', () => {
     boutonValiderHTML.style.display = 'none'; //Cacher le bouton Valider
     quizQuestionHTML.innerText="";
     boutonRejouerHTML.style.display = 'inline-block';
+    
   
   quizQuestionHTML.innerText = `Tu as obtenu ${score}/${quizTableau.questions.length}.`; //Afficher le Résultat final du quiz 
 
