@@ -157,6 +157,15 @@ main {
     margin-right: 10px; /* Espace à droite de l'emoji */
 }
 
+#messageResultat {
+    padding: 20px; /* Espace intérieur */
+    margin: 20px 0; /* Marges autour de la section */
+    color: var(--font-color); /* Couleur du texte */
+    font-family: 'Just Another Hand', cursive;
+    font-size: 25px;
+
+}
+
 /* Style des questions */
 .styleQuestion {
     text-align: center;
