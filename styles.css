@@ -338,8 +338,9 @@ aside {
     color: #fff;
     width: 350px;
     height: 350px;    
-    margin-left: 220px; /* Espace entre l'image et le texte */
+    margin-left: 300px; /* Espace entre l'image et le texte */
     margin-right: auto;
+    font-size: 25px;
 }
 
 /* Conteneur des paillettes */
