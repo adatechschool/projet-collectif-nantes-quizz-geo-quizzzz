@@ -1,16 +1,20 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Scores du Quiz</title>
-    <link rel="stylesheet" href="styles.css"> <!-- Lien vers un fichier CSS pour le style -->
+    <link rel="stylesheet" href="styles.css">
+    <script defer src="game.js"></script> <!-- Charger le fichier scores.js pour gérer les scores -->
+    <script type="module" defer src="game.js"></script>
 </head>
 <body>
-    <h1>Scores du Quiz</h1>
-    <div id="scores-list"></div>
-    <button onclick="clearScores()">Effacer les scores</button>
-    <script type="module" defer src="game.js"></script>
-     <script type="module"src="js/scores.js"></script> <!-- Fichier JavaScript pour afficher les scores -->
+    <header>
+        <h1>Scores du Quiz</h1>
+    </header>
+    <main>
+        <div id="scores-list"></div> <!-- L'élément où les scores seront affichés -->
+        <button onclick="clearScores()">Effacer les scores</button> <!-- Bouton pour effacer les scores -->
+    </main>
 </body>
 </html>

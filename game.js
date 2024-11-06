@@ -5,6 +5,7 @@ import  {quizTableau}  from './questions.js'; // Import des questions
 let quizQuestionHTML = document.getElementById('questions');
 let quizReponseHTML = document.getElementById('reponses');
 
+
 let texteCarte = document.getElementById('texteDeLaCarte');
 let carte = document.getElementById('carte')
 const imageElement = document.createElement('img');
@@ -87,7 +88,7 @@ const progressText = document.getElementById('progress-text');
 const totalQuestions = quizTableau.questions.length;
 
 
-quizQuestionHTML.innerText=firstQuestion.text// Injecter le texte de la question dans l'emplacement dédié
+quizQuestionHTML.innerText=firstQuestion.text // Injecter le texte de la question dans l'emplacement dédié
 quizReponseHTML.innerText=firstQuestion.options;
 
 
@@ -232,11 +233,23 @@ boutonSuivantHTML.addEventListener('click', () => {
     quizQuestionHTML.innerText="";
     boutonRejouerHTML.style.display = 'inline-block';
     boutonValiderHTML.style.display = 'none';   // Cacher le bouton Valider
-    texteCarte.style.display = 'inline-block';   // Afficher un message texte carte
-    texteCarte.innerText = "Bravo tu as obtenu un score de " + score + " sur " + quizTableau.questions.length + " Félicitations ! 🎉 " // Afficher le commentaire du texteCarte
-  console.log(texteCarte.innerText)
+
+    quizQuestionHTML.innerText = `Tu as obtenu ${score}/${quizTableau.questions.length}.`; //Afficher le ésultat final du quiz 
+
+    let texteFinaleDuQuiz= document.getElementById('messageResultat'); // Creation d'une variable et connexion avec l'id messageResultat  
+  
+
+  // Message personnalisé en fonction du score
+  if (score === quizTableau.questions.length) {
+    texteFinaleDuQuiz.innerText = "Excellent ! Tu es incollable sur les capitales du monde! 🎉";
+  } else if (score >= quizTableau.questions.length / 2) {
+    texteFinaleDuQuiz.innerText = "Bien joué ! Tu connais bien la geographie 👍";
+  } else {
+    texteFinaleDuQuiz.innerText = "Bah alors, tu y es presque...😊";
+  }
 };
 })
+
 
 // Fonction pour réinitialiser le quiz
 boutonRejouerHTML.addEventListener('click', () => {
@@ -248,48 +261,3 @@ loadQuestion()// TODO Recharger la première question
 });
 
 loadQuestion() 
-
-
-function saveScore(score) {   // fonction qui permets de stocker les scores dans un fichier HTML
-  const date = new Date().toLocaleString(); // Date et heure de la partie
-  const scoreEntry = { score: score, date: date };
-
-  // Récupère les scores existants ou initialise un tableau vide
-  let scores = JSON.parse(localStorage.getItem("quizScores")) || [];
-  scores.push(scoreEntry);
-
-  // Sauvegarde la liste des scores mise à jour dans le localStorage
-  localStorage.setItem("quizScores", JSON.stringify(scores));
-}
-console.log(saveScore);
-
-// Appelle la fonction lorsque le quiz est terminé
-function endQuiz(score) {
-  saveScore(score);
-  // Afficher le score ou rediriger vers la page de scores ici
-  window.location.href = "scores.html"; // Redirige vers la page de scores
-}
-// Fonction pour charger et afficher les scores
-function displayScores() {
-  const scoresList = document.getElementById("scores-list");
-  const scores = JSON.parse(localStorage.getItem("quizScores")) || [];
-
-  if (scores.length === 0) {
-      scoresList.innerHTML = "<p>Aucun score enregistré pour l'instant.</p>";
-      console.log(scoresList);
-  } else {
-      scoresList.innerHTML = scores
-          .map((entry, index) => `<p>Partie ${index + 1}: ${entry.score} points - ${entry.date}</p>`)
-          .join("");
-  }
-}
-
-// Fonction pour effacer les scores
-function clearScores() {
-  localStorage.removeItem("quizScores");
-  displayScores(); // Recharge la liste des scores après suppression
-}
-
-// Appelle `displayScores` lors du chargement de la page
-
-document.addEventListener("DOMContentLoaded", displayScores);
