@@ -1,10 +1,16 @@
+.fredericka-the-great-regular {
+    font-family: "Fredericka the Great", serif;
+    font-weight: 400;
+    font-style: normal;
+  }
+
 /* Variables CSS pour une gestion facile des couleurs */
 :root {
     --primary-color: #2C6E49; /* Couleur principale pour le header */
     --secondary-color: #E3C899; /* Couleur de fond pour le aside */
     --button-bg: blanchedalmond; /* Couleur de fond des boutons */
     --button-hover: #D97706; /* Couleur de survol pour le bouton valider */
-    --font-color: #333; /* Couleur du texte */
+    --font-color: #c3dee0; /* Couleur du texte */
     --emoji-color: #D97706; /* Couleur pour le contenu emoji */
     --border-radius: 10px; /* Rayon des bordures */
 }
@@ -12,9 +18,9 @@
 /* Style du body */
 body {
     padding: 10px;
-    font-family: 'Schoolbell', cursive; /* Applique la police par défaut */
+    font-family: "Fredericka the Great", serif; /*Applique la police par défaut */
     margin: 0; /* Supprime les marges par défaut */
-    background-color: #f9f9f9; /* Couleur de fond douce */
+    background-color: #ffffff; /* Couleur de fond douce */
     background-image: url('assets/TableuV3.jpg');
     background-size: cover;
     background-position: center;
@@ -29,11 +35,11 @@ header {
     width: 100%;
     padding: 1%;
     margin-bottom: 30px;
-    color: white;
+    color: rgb(255, 255, 255);
     display: flex;
     align-items: center;
     justify-content: space-between;
-    font-family: 'Just Another Hand', cursive;
+    font-family: 'Chalk Hand Lettering', cursive;
     font-size: 30px;
     /* background-color: rgba(12, 149, 65, 0.475); */
     /* backdrop-filter: blur(50px); */
@@ -67,8 +73,6 @@ header::before {
     display: flex; /* Active Flexbox */
     gap: 10px; /* Espace entre les éléments */
     min-height: 100vh; /* Hauteur minimum pleine page */
-
-
 }
 
 
@@ -110,12 +114,12 @@ main {
 }
 
 /* Style de la section questions */
-#questions {
+#questions.fredericka-the-great-regular {
     padding: 20px; /* Espace intérieur */
     margin: 20px 0; /* Marges autour de la section */
     color: var(--font-color); /* Couleur du texte */
-    font-family: 'Just Another Hand', cursive;
-    font-size: 25px;
+    /*font-family: 'Chalk Hand Lettering';*/
+    font-size:80px;
 }
 
 #questions::before {
@@ -152,6 +156,14 @@ aside {
     border: 1px solid rgba(255, 255, 255, 0.3);
 }
 
+#messageResultat {
+    padding: 20px; /* Espace intérieur */
+    margin: 20px 0; /* Marges autour de la section */
+    color: var(--font-color); /* Couleur du texte */
+    font-family: 'Just Another Hand', cursive;
+    font-size: 25px;
+}
+
 #valider,
 #suivant,
 #rejouer {
@@ -171,7 +183,7 @@ aside {
     padding: 40px; /* Espace intérieur */
     margin: 40px 0; /* Marges autour de la section */
     color: var(--font-color); /* Couleur du texte */
-    font-family: 'Just Another Hand', cursive;
+    font-family: 'Chalk Hand Lettering', cursive;
     font-size: 25px;
     align-items: center; /* Centre verticalement */
     justify-content: center; /* Centre horizontalement */
@@ -233,4 +245,67 @@ aside {
     justify-content: flex-end;
     text-align: center;
     padding-top: 20px; /* Espace supérieur */
+}
+
+/* Conteneur des paillettes */
+.sparkle-container {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    pointer-events: none;
+    z-index: 1000;
+}
+
+/* Paillette de base */
+.sparkle {
+    position: absolute;
+    bottom: 0;
+    opacity: 0;
+    animation: sparkleUp 3s ease-in-out infinite;
+    transform-origin: center;
+}
+
+/* Paillettes circulaires */
+.sparkle.circle {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background-color: rgba(255, 223, 0, 0.9); /* Jaune doré */
+    box-shadow: 0 0 8px rgba(255, 223, 0, 0.6);
+}
+
+/* Paillettes en losange */
+.sparkle.diamond {
+    width: 8px;
+    height: 8px;
+    background-color: rgba(255, 105, 180, 0.8); /* Rose clair */
+    transform: rotate(45deg); /* Rotation pour l'effet losange */
+    box-shadow: 0 0 10px rgba(255, 105, 180, 0.5);
+}
+
+/* Paillettes en étoile */
+.sparkle.star {
+    width: 10px;
+    height: 10px;
+    clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+    background-color: rgba(173, 216, 230, 0.9); /* Bleu pastel */
+    box-shadow: 0 0 12px rgba(173, 216, 230, 0.6);
+}
+
+/* Animation de montée */
+@keyframes sparkleUp {
+    0% {
+        transform: translateY(0) scale(0.5);
+        opacity: 0;
+    }
+    25% {
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(-100vh) scale(1.5);
+        opacity: 0;
+    }
 }

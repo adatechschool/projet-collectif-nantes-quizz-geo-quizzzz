@@ -24,6 +24,12 @@ const progressBar = document.getElementById('progress-bar');
 const progressText = document.getElementById('progress-text');
 const totalQuestions = quizTableau.questions.length;
 
+// Nombre de paillettes pour chaque bonne réponse
+const numberOfSparkles = 500;
+const sparkleContainer = document.querySelector(".sparkle-container");
+const sparkleTypes = ["circle", "diamond", "star"]; // Différentes formes
+
+
 
 quizQuestionHTML.innerText=firstQuestion.text// Injecter le texte de la question dans l'emplacement dédié
 
@@ -42,6 +48,30 @@ function checkReponse(optionReponse, correctAnswer) {
     return optionReponse === correctAnswer;
 }
 
+// Fonction pour afficher les paillettes
+function showSparkles() {
+  for (let i = 0; i < numberOfSparkles; i++) {
+      const sparkle = document.createElement("div");
+      sparkle.classList.add("sparkle");
+
+      // Choix aléatoire de la forme de la paillette
+      const randomType = sparkleTypes[Math.floor(Math.random() * sparkleTypes.length)];
+      sparkle.classList.add(randomType);
+
+      // Positionnement horizontal aléatoire et animation
+      sparkle.style.left = `${Math.random() * 100}%`;
+      sparkle.style.animationDuration = `${2 + Math.random() * 3}s`;
+      sparkle.style.animationDelay = `${Math.random() * 2}s`;
+
+      sparkleContainer.appendChild(sparkle);
+  }
+
+  // Supprime les paillettes après 3 secondes
+  setTimeout(() => {
+      sparkleContainer.innerHTML = ""; // Vide le conteneur de paillettes
+  }, 3000);
+}
+
 // Ajouter un seul event listener pour le bouton valider
 boutonValiderHTML.addEventListener('click', () => {
     if (reponseSelectionnee === null) return; // Si aucune réponse n'est sélectionnée
@@ -58,11 +88,13 @@ boutonValiderHTML.addEventListener('click', () => {
     carte.style.float = 'center';
 
     if (reponseSelectionnee === reponseCorrecte) {
+      showSparkles();
         score++;
         imageElement.src = questionActuelle.img_ville;
         carte.appendChild(imageElement);
         texteCarte.innerHTML = `<span class="bravo">BRAVO !</span><br> Il s'agit bien de ${questionActuelle.descriptif}`;
         console.log(score);
+      
     } else {
         imageElement.src = questionActuelle.img_ville;
         carte.appendChild(imageElement);
@@ -130,7 +162,21 @@ boutonSuivantHTML.addEventListener('click', () => {
     boutonValiderHTML.style.display = 'none'; //Cacher le bouton Valider
     quizQuestionHTML.innerText="";
     boutonRejouerHTML.style.display = 'inline-block';
+  
+  quizQuestionHTML.innerText = `Tu as obtenu ${score}/${quizTableau.questions.length}.`; //Afficher le Résultat final du quiz 
+
+  let texteFinaleDuQuiz= document.getElementById('messageResultat'); // Creation d'une variable et connexion avec l'id messageResultat  
+  
+
+  // Message personnalisé en fonction du score
+  if (score === quizTableau.questions.length) {
+    texteFinaleDuQuiz.innerText = "Excellent ! Tu es incollable sur les capitales du monde! 🎉";
+  } else if (score >= quizTableau.questions.length / 2) {
+    texteFinaleDuQuiz.innerText = "Bien joué ! Tu connais bien la geographie 👍";
+  } else {
+    texteFinaleDuQuiz.innerText = "Bah alors, tu y es presque...😊";
   }
+}
 });
 
 // Fonction pour réinitialiser le quiz
