@@ -33,10 +33,13 @@ header {
 }
 
 header::before {
+    border-color: black;
+    border-width: 100%;
+    border-top: #333;
     content: "🌍"; 
-    font-size: 6em;
+    font-size: 5em;
     margin-right: 8px; 
-    animation: rotation 15s linear infinite; /* Ajout de l'animation */
+      
 }
 
 @keyframes rotation {

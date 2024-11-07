@@ -19,7 +19,9 @@ const boutonValiderHTML = document.getElementById('valider')
 let reponseBouton= document.createElement('button');
 let questionActuelle = quizTableau.questions[currentQuestionIndex];  
 let score = 0;
-const confettiContainer = document.getElementsByClassName("sparkle-container");
+let texteFinaleDuQuiz= document.getElementById('messageResultat'); 
+
+// const confettiContainer = document.getElementsByClassName("sparkle-container");
 
 // Nombre de paillettes pour chaque bonne réponse
 const numberOfSparkles = 500;
@@ -129,7 +131,7 @@ boutonValiderHTML.addEventListener('click', () => {
     carte.style.float = 'center';
 
     if (reponseSelectionnee === reponseCorrecte) {
-      showSparkles();
+      showSparkles();-
         score++;
         imageElement.src = questionActuelle.img_ville;
         carte.appendChild(imageElement);
@@ -148,6 +150,8 @@ boutonValiderHTML.addEventListener('click', () => {
 
 
 function loadQuestion() {
+
+  
 
   resetTimer();    //   AJOUT Réinitialiser le timer au chargement d'une nouvelle question
   startTimer();    // AJOUT Démarrer le timer pour cette question
@@ -183,6 +187,7 @@ function loadQuestion() {
     });
     updateProgressBar()
     });
+    
 }
 
 
@@ -202,9 +207,10 @@ function loadNextQuestion() { //AJOUT
     boutonSuivantHTML.style.display = 'none';
     quizQuestionHTML.innerText = "";
     boutonRejouerHTML.style.display = 'inline-block';
-}
-}
 
+    
+}
+}
 
 // Fonction pour générer une couleur aléatoire
 function getRandomColor() {
@@ -232,11 +238,10 @@ boutonSuivantHTML.addEventListener('click', () => {
     boutonValiderHTML.style.display = 'none'; //Cacher le bouton Valider
     quizQuestionHTML.innerText="";
     boutonRejouerHTML.style.display = 'inline-block';
-    boutonValiderHTML.style.display = 'none';   // Cacher le bouton Valider
 
-    quizQuestionHTML.innerText = `Tu as obtenu ${score}/${quizTableau.questions.length}.`; //Afficher le ésultat final du quiz 
+    quizQuestionHTML.innerText = `Tu as obtenu ${score}/${quizTableau.questions.length}.`; //Afficher le Résultat final du quiz 
 
-    let texteFinaleDuQuiz= document.getElementById('messageResultat'); // Creation d'une variable et connexion avec l'id messageResultat  
+    // Creation d'une variable et connexion avec l'id messageResultat  
   
 
   // Message personnalisé en fonction du score
@@ -252,12 +257,12 @@ boutonSuivantHTML.addEventListener('click', () => {
 
 
 // Fonction pour réinitialiser le quiz
-boutonRejouerHTML.addEventListener('click', () => {
+boutonRejouerHTML.addEventListener('click', () => { 
+texteFinaleDuQuiz.innerText ='';
 currentQuestionIndex= 0      // TODO Réinitialiser l'index 
 boutonRejouerHTML.style.display = 'none'; // TODO Cacher le bouton Rejouer et afficher le bouton Suivant  
 boutonSuivantHTML.style.display = 'inline-block'; // Afficher le bouton suivant
 loadQuestion()// TODO Recharger la première question
-
 });
 
 loadQuestion() 

@@ -10,9 +10,9 @@ export const quizTableau = {
       ],
       correct_answer: "Paris",
       img_ville:"assets/Paris.png",
-      descriptif:"Paris, France : Vue emblématique de la Tour Eiffel se dressant au-dessus des rues parisiennes avec ses bâtiments classiques, symbole mondial de la capitale française."
+      descriptif: "Paris, France : <br> Vue emblématique de la Tour Eiffel se dressant au-dessus des rues parisiennes avec ses bâtiments classiques, symbole mondial de la capitale française.",
     },
-    {
+  {
       text: "Quelle est la capitale du Canada",
       options: [
         "Toronto",
