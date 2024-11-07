@@ -18,7 +18,36 @@ const boutonValiderHTML = document.getElementById('valider')
 let reponseBouton= document.createElement('button');
 let questionActuelle = quizTableau.questions[currentQuestionIndex];  
 let score = 0;
-const confettiContainer = document.getElementById("confetti-container");
+const confettiContainer = document.getElementsByClassName("sparkle-container");
+
+// Nombre de paillettes pour chaque bonne réponse
+const numberOfSparkles = 500;
+const sparkleContainer = document.querySelector(".sparkle-container");
+const sparkleTypes = ["circle", "diamond", "star"]; // Différentes formes
+
+// Fonction pour afficher les paillettes
+function showSparkles() {
+    for (let i = 0; i < numberOfSparkles; i++) {
+        const sparkle = document.createElement("div");
+        sparkle.classList.add("sparkle");
+
+        // Choix aléatoire de la forme de la paillette
+        const randomType = sparkleTypes[Math.floor(Math.random() * sparkleTypes.length)];
+        sparkle.classList.add(randomType);
+
+        // Positionnement horizontal aléatoire et animation
+        sparkle.style.left = `${Math.random() * 100}%`;
+        sparkle.style.animationDuration = `${2 + Math.random() * 3}s`;
+        sparkle.style.animationDelay = `${Math.random() * 2}s`;
+
+        sparkleContainer.appendChild(sparkle);
+    }
+
+    // Supprime les paillettes après 3 secondes
+    setTimeout(() => {
+        sparkleContainer.innerHTML = ""; // Vide le conteneur de paillettes
+    }, 3000);
+}
 
 
 //CODE TIMER !!!! 
@@ -60,7 +89,7 @@ const totalQuestions = quizTableau.questions.length;
 
 quizQuestionHTML.innerText=firstQuestion.text// Injecter le texte de la question dans l'emplacement dédié
 quizReponseHTML.innerText=firstQuestion.options;
-const numberOfConfetti = 30;
+
 
 
 function updateProgressBar() {
@@ -68,27 +97,8 @@ function updateProgressBar() {
   progressBar.style.width = `${progress}%`;
   progressText.textContent = `Question ${currentQuestionIndex + 1} sur ${totalQuestions}`;
 }
-function generateConfetti() {
-  // Nombre de confettis à générer
-console.log("toto")
-  for (let i = 0; i < numberOfConfetti; i++) {
-      // Crée un élément confetti
-      const confetti = document.createElement("div");
-      confetti.classList.add("confetti");
-console.log("toto2")
-      // Positionne les confettis aléatoirement
-      confetti.style.left = Math.random() * 100 + "%";
-      confetti.style.backgroundColor = getRandomColor();
 
-      // Ajoute le confetti au conteneur
-      confettiContainer.appendChild(confetti);
 
-      //Retire le confetti après l'animation pour ne pas saturer le DOM
-      confetti.addEventListener("animationend", () => {
-         confetti.remove();
-      });
-  }
-}
 
 
 // Déclarer l'event listener pour le bouton valider en dehors de checkReponse
@@ -118,7 +128,7 @@ boutonValiderHTML.addEventListener('click', () => {
     carte.style.float = 'center';
 
     if (reponseSelectionnee === reponseCorrecte) {
-      generateConfetti();
+      showSparkles();
         score++;
         imageElement.src = questionActuelle.img_ville;
         carte.appendChild(imageElement);

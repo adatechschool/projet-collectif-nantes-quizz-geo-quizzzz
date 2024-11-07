@@ -146,9 +146,12 @@ aside {
     height: auto; /* Ajuster la hauteur automatiquement */
 }
 
+<<<<<<< HEAD
 
 
 
+=======
+>>>>>>> aeef336 (remis en marche des paillettes)
 #valider {
     background-color: #D97706;
     display: center;
@@ -246,4 +249,123 @@ aside {
     justify-content: flex-end;
     text-align: center;
     padding-top: 20px; /* Espace supérieur */
+}
+
+/* Style de base pour cacher les confettis */
+#confetti-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none; /* Pour que les confettis ne bloquent pas les clics */
+    overflow: hidden;
+    z-index: 10; /* Pour qu'ils apparaissent au-dessus du contenu */
+}
+
+/* Style des confettis */
+.confetti {
+    position: relative;
+    width: 8px;
+    height: 8px;
+    background-color: color;
+    opacity: 10;
+    animation: confetti-fall 2s ease-out forwards ;
+    transform-origin: bottom;
+}
+
+/* Paillettes circulaires */
+.confetti.circle {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background-color: rgba(255, 223, 0, 0.9); /* Jaune doré */
+    box-shadow: 0 0 8px rgba(255, 223, 0, 0.6);
+}
+
+/* Paillettes en losange */
+.confetti.diamond {
+    width: 8px;
+    height: 8px;
+    background-color: rgba(255, 105, 180, 0.8); /* Rose clair */
+    transform: rotate(45deg); /* Rotation pour l'effet losange */
+    box-shadow: 0 0 10px rgba(255, 105, 180, 0.5);
+}
+
+/* Paillettes en étoile */
+.confetti.star {
+    width: 10px;
+    height: 10px;
+    clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+    background-color: rgba(173, 216, 230, 0.9); /* Bleu pastel */
+    box-shadow: 0 0 12px rgba(173, 216, 230, 0.6);
+}
+
+/* Animation pour faire tomber les confettis */
+@keyframes confetti-fall {
+    0% { transform: translateY(0) rotate(0); }
+    100% { transform: translateY(600px) rotate(360deg); }
+}
+
+/* Conteneur des paillettes */
+.sparkle-container {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    pointer-events: none;
+    z-index: 1000;
+}
+
+/* Paillette de base */
+.sparkle {
+    position: absolute;
+    bottom: 0;
+    opacity: 0;
+    animation: sparkleUp 3s ease-in-out infinite;
+    transform-origin: center;
+}
+
+/* Paillettes circulaires */
+.sparkle.circle {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background-color: rgba(255, 223, 0, 0.9); /* Jaune doré */
+    box-shadow: 0 0 8px rgba(255, 223, 0, 0.6);
+}
+
+/* Paillettes en losange */
+.sparkle.diamond {
+    width: 8px;
+    height: 8px;
+    background-color: rgba(255, 105, 180, 0.8); /* Rose clair */
+    transform: rotate(45deg); /* Rotation pour l'effet losange */
+    box-shadow: 0 0 10px rgba(255, 105, 180, 0.5);
+}
+
+/* Paillettes en étoile */
+.sparkle.star {
+    width: 10px;
+    height: 10px;
+    clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+    background-color: rgba(173, 216, 230, 0.9); /* Bleu pastel */
+    box-shadow: 0 0 12px rgba(173, 216, 230, 0.6);
+}
+
+/* Animation de montée */
+@keyframes sparkleUp {
+    0% {
+        transform: translateY(0) scale(0.5);
+        opacity: 0;
+    }
+    25% {
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(-100vh) scale(1.5);
+        opacity: 0;
+    }
 }
